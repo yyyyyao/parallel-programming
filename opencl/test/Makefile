@@ -15,5 +15,4 @@ clean:
 	$(RM) $(TARGET)
 
 run:
-	#./$(TARGET) ../../images/monkey.jpg 3 3
-	./$(TARGET) ./dat.jpg 3
+	./$(TARGET) ../../images/monkey.jpg 3 3

@@ -77,31 +77,22 @@ void myblur(const cv::Mat& input, cv::Mat& dst, cv::Size size)
 
 int main(int argc, char* argv[])
 {
-  cv::Mat input;
-  cv::Mat output;
-  cv::Mat output_ref;
-  cv::Mat output_cl;
+  cv::Mat src, dst;
   cv::Size ksize;
+  char* window_name = "Blur";
  
   if(argc > 1) {
-    input = cv::imread(argv[1], 0);
+    src = cv::imread(argv[1], 0);
   }
-  IplImage ipl = input;
+  int rows, cols;
+  row = src.rows;
+  cols = src.s;
+  unsigned char src_im[rows*cols], dst_im[rows*cols];
 
-  ksize.width = 3;
-  ksize.height = 3;
   if(argc > 2) {
     ksize.width = atoi(argv[2]);
     ksize.height = atoi(argv[2]);
   }
-
-  int rows, cols, steps;
-  rows = input.rows;
-  cols = input.cols;
-  steps = input.step;
-  unsigned char src[rows * cols], dst[rows * cols];
-
-  int radius = (ksize.width - 1) / 2;
 
   output_cl = input.clone();
   output_ref = input.clone();
@@ -117,6 +108,20 @@ int main(int argc, char* argv[])
 #if 1
   int inputSize = input.rows * input.step;
   float fweight;
+
+  unsigned char* src_img = (unsigned char*)malloc(
+      sizeof(unsigned char) * inputSize); 
+  unsigned char* dst_img = (unsigned char*)malloc(
+      sizeof(unsigned char) * inputSize); 
+
+  for(int k = 0; k < inputSize; k++) {
+    src_img[k] = input.data[k];
+    output_cl.data[k] = src_img[k];
+  }
+
+  //cv::imshow("", output_cl);
+  //cv::waitKey(0);
+  //return 0;
 
   // Load the kernel source code into the array source_str
   FILE *fp;
@@ -153,11 +158,46 @@ int main(int argc, char* argv[])
           inputSize * sizeof(unsigned char), NULL, &ret);
   cl_mem dstDev = clCreateBuffer(context, CL_MEM_READ_WRITE, 
           inputSize * sizeof(unsigned char), NULL, &ret);
+  /*
+  cl_mem inputHeightDev = clCreateBuffer(context, CL_MEM_READ_ONLY, 
+          sizeof(int), NULL, &ret);
+  cl_mem inputWidthDev = clCreateBuffer(context, CL_MEM_READ_ONLY, 
+          sizeof(int), NULL, &ret);
+  cl_mem inputWidthStepDev = clCreateBuffer(context, CL_MEM_READ_ONLY, 
+          sizeof(int), NULL, &ret);
+  cl_mem radiusDev= clCreateBuffer(context, CL_MEM_READ_ONLY, 
+          sizeof(int), NULL, &ret);
+  cl_mem fweightDev= clCreateBuffer(context, CL_MEM_READ_ONLY, 
+          sizeof(float), NULL, &ret);
+  */
+  cl_mem f_dstDev = clCreateBuffer(context, CL_MEM_READ_WRITE, 
+          inputSize * sizeof(float), NULL, &ret);
 
   // Copy the lists A and B to their respective memory buffers
   ret = clEnqueueWriteBuffer(command_queue, inputDev, CL_TRUE, 0,
-          inputSize * sizeof(unsigned char), input.data, 0, NULL, NULL);
+          inputSize * sizeof(unsigned char), src_img, 0, NULL, NULL);
+          //inputSize * sizeof(unsigned char), input.data, 0, NULL, NULL);
 
+  int radius = (ksize.width - 1) / 2;
+  /*
+  ret = clEnqueueWriteBuffer(command_queue, inputHeightDev, CL_TRUE, 0,
+          sizeof(int), &input.rows, 0, NULL, NULL);
+
+  ret = clEnqueueWriteBuffer(command_queue, inputWidthDev, CL_TRUE, 0,
+          sizeof(int), &input.cols, 0, NULL, NULL);
+
+  ret = clEnqueueWriteBuffer(command_queue, inputWidthStepDev, CL_TRUE, 0,
+          sizeof(int), &input.step, 0, NULL, NULL);
+
+  cout << "radius:" << radius << endl;
+  ret = clEnqueueWriteBuffer(command_queue, radiusDev, CL_TRUE, 0,
+          sizeof(int), &radius, 0, NULL, NULL);
+
+  fweight = (float)1 / (ksize.width * ksize.height);
+  cout << "fweight:" << fweight << endl;
+  ret = clEnqueueWriteBuffer(command_queue, fweightDev, CL_TRUE, 0,
+          sizeof(float), &fweight, 0, NULL, NULL);
+  */
 
   // Create a program from the kernel source
   cl_program program = clCreateProgramWithSource(context, 1, 
@@ -177,26 +217,25 @@ int main(int argc, char* argv[])
   }
 
   // Create the OpenCL kernel
-  cl_kernel kernel = clCreateKernel(program, "blur_cl_local", &ret);
+  cl_kernel kernel = clCreateKernel(program, "transpose", &ret);
 
-  if(ret != CL_SUCCESS) {
-    cout << "Error: clCreateKernel" << endl;
-    return 0;
-  }
-
-
-  fweight = (float)1 / (ksize.width * ksize.height);
   ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&inputDev);
   ret |= clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&dstDev);
-  ret |= clSetKernelArg(kernel, 2, sizeof(int), (void *)&rows);
-  ret |= clSetKernelArg(kernel, 3, sizeof(int), (void *)&cols);
-  ret |= clSetKernelArg(kernel, 4, sizeof(int), (void *)&steps);
+  ret |= clSetKernelArg(kernel, 2, sizeof(int), (void *)&(input.rows));
+  ret |= clSetKernelArg(kernel, 3, sizeof(int), (void *)&(input.cols));
+  ret |= clSetKernelArg(kernel, 4, sizeof(int), (void *)&(input.step));
 
-  /* be careful! it's unworked! */
-  //ret |= clSetKernelArg(kernel, 4, sizeof(int), (void *)&(input.step));
-  ret |= clSetKernelArg(kernel, 5, sizeof(int), (void *)&radius);
-  ret |= clSetKernelArg(kernel, 6, sizeof(int), (void *)&fweight);
-  ret |= clSetKernelArg(kernel, 7, 10000 * sizeof(unsigned char), NULL);
+  /*
+  // Set the arguments of the kernel
+  ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&inputDev);
+  ret |= clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&dstDev);
+  ret |= clSetKernelArg(kernel, 2, sizeof(int), (void *)&inputHeightDev);
+  ret |= clSetKernelArg(kernel, 3, sizeof(int), (void *)&inputWidthDev);
+  ret |= clSetKernelArg(kernel, 4, sizeof(int), (void *)&inputWidthStepDev);
+  ret |= clSetKernelArg(kernel, 5, sizeof(int), (void *)&radiusDev);
+  ret |= clSetKernelArg(kernel, 6, sizeof(float), (void *)&fweightDev);
+  ret |= clSetKernelArg(kernel, 7, sizeof(cl_mem), (void *)&f_dstDev);
+  */
 
   if(ret != CL_SUCCESS) {
     cout << "Error: clSetKernelArg" << endl;
@@ -204,26 +243,43 @@ int main(int argc, char* argv[])
   }
 
   // Execute the OpenCL kernel on the list
+  //size_t global_item_size = inputSize - 10000; // Process the entire lists
+  size_t global_item_size = inputSize; // Process the entire lists
+  //size_t global_item_size = inputSize / 16 * 16; // Process the entire lists
+  size_t local_item_size = 4; // Divide work items into groups of 64
+  //size_t local_item_size = 16; // Divide work items into groups of 64
   size_t global_item_size_2d[2];
   global_item_size_2d[0] = input.rows / 16 * 16;
   global_item_size_2d[1] = input.step / 16 * 16;
-  cout << global_item_size_2d[0]<< ":" << global_item_size_2d[1] << endl;
   size_t local_item_size_2d[2];
-  local_item_size_2d[0] = 16;
-  local_item_size_2d[1] = 16;
-
+  local_item_size_2d[0] = 8;
+  local_item_size_2d[1] = 8;
+#if 1
   ret = clEnqueueNDRangeKernel(command_queue, kernel, 2, NULL, 
          global_item_size_2d, local_item_size_2d, 0, NULL, NULL);
+#else 
+  ret = clEnqueueNDRangeKernel(command_queue, kernel, 1, NULL, 
+          &global_item_size, &local_item_size, 0, NULL, NULL);
+#endif
 
   cout << "clEnqueueNDRangeKernel:" << ret << endl;
 
-  for(int i = 0; i < inputSize; i++) {
-    output_cl.data[i] = 0;
-  }
 
   // Read the memory buffer C on the device to the local variable C
   ret = clEnqueueReadBuffer(command_queue, dstDev, CL_TRUE, 0, 
-          inputSize * sizeof(unsigned char), output_cl.data, 0, NULL, NULL);
+          inputSize * sizeof(unsigned char), dst_img, 0, NULL, NULL);
+          //inputSize * sizeof(unsigned char), output_cl.data, 0, NULL, NULL);
+  for(int l; l < inputSize; l++) {
+    output_cl.data[l] = dst_img[l];
+  }
+
+  float* f_ = (float*)malloc(sizeof(float) * inputSize); 
+  /*
+  ret = clEnqueueReadBuffer(command_queue, f_dstDev, CL_TRUE, 0, 
+          inputSize * sizeof(float) - 1, f_, 0, NULL, NULL);
+  for(int i = 0; i < 70; i++)
+    cout << f_[i] << endl;
+  */
 
   cv::imshow("", output_cl);
   cv::waitKey(0);
@@ -235,11 +291,20 @@ int main(int argc, char* argv[])
   ret = clReleaseProgram(program);
   ret = clReleaseMemObject(inputDev);
   ret = clReleaseMemObject(dstDev);
+  /*
+  ret = clReleaseMemObject(inputHeightDev);
+  ret = clReleaseMemObject(inputWidthDev);
+  ret = clReleaseMemObject(inputWidthStepDev);
+  ret = clReleaseMemObject(fweightDev);
+  ret = clReleaseMemObject(radiusDev);
+  */
+  ret = clReleaseMemObject(f_dstDev);
   ret = clReleaseCommandQueue(command_queue);
   ret = clReleaseContext(context);
+  free(f_);
 
-  compareMat(output_ref, output_cl);
-  //compareMat(input, output_cl);
+  //compareMat(output_ref, output_cl);
+  compareMat(input, output_cl);
 
   return 0;
 #endif
