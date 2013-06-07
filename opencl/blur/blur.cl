@@ -9,9 +9,6 @@ __kernel void transpose(
   int j = get_global_id(1);
 
   if( i < srcHeight && j < srcWidth) {
-  //if( i < 100 && j < 100) {
-    //dst[get_global_id(0) * srcWidthStep + get_global_id(1)] = 
-    //    dst[get_global_id(1) * srcWidthStep + get_global_id(0)];
     dst[get_global_id(0) * srcWidthStep + get_global_id(1)] = 
         src[get_global_id(1) * srcWidthStep + get_global_id(0)];
   }
@@ -45,14 +42,14 @@ __kernel void blur_cl_local(
   int localMemWidth = get_local_size(1) + radius * 2;
 
   for(k = get_global_id(0) - radius;
-      k <= workItemStartRow + get_local_size(0) + radius;
+      k < (signed int)(workItemStartRow + get_local_size(0) + radius);
       k += get_local_size(0)) {
     if(k < 0) _k = k * -1;
     else if(k >= srcHeight) _k = (srcHeight- 1) * 2 - k;
     else _k = k;
 
     for(l = get_global_id(1) - radius;
-        l <= workItemStartCol + get_local_size(1) + radius;
+        l < (signed int)(workItemStartCol + get_local_size(1) + radius);
         l += get_local_size(1)) {
       if(l < 0) _l = l * -1;
       else if(l >= srcWidth) _l = (srcWidth - 1) * 2 - l;
@@ -67,15 +64,18 @@ __kernel void blur_cl_local(
 
   barrier(CLK_LOCAL_MEM_FENCE);
 
-  //localImg[(get_local_id(0) + radius) * localMemWidth + get_local_id(1) + radius] =
-  //    src[get_global_id(0) * srcWidthStep + get_global_id(1)];
-  
-  dst[get_global_id(1) * srcWidthStep + get_global_id(0)] = 
-      //src[get_global_id(0) * srcWidthStep + get_global_id(1)];
-      localImg[(get_local_id(0) + radius) * localMemWidth + get_local_id(1) + radius];
-  return;
+  //dst[i * srcWidthStep + j] = 
+  //    localImg[(localRowIndex + radius) * localMemWidth + localColIndex + radius];
+  //return;
 
-  //dst[j + i * srcWidthStep] = convert_uchar_sat_rte(sum);
+  for(k = localRowIndex; k <= localRowIndex + radius * 2; k++) {
+    for(l = localColIndex; l <= localColIndex + radius * 2; l++) {
+      sum += localImg[l + k * localMemWidth] * fweight;
+    }
+  }
+
+  dst[j + i * srcWidthStep] = convert_uchar_sat_rte(sum);
+  return;
 }
 
 __kernel void blur_cl_naive(
