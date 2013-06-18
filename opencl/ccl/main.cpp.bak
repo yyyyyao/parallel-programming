@@ -1,0 +1,153 @@
+#include <math.h>
+#include <iostream>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <list>
+#include <algorithm>
+
+#include <stdio.h>
+#include <stdlib.h>
+#ifdef __APPLE__
+#include <OpenCl/opencl.h>
+#else
+#include <CL/cl.h>
+#endif
+
+using namespace std;
+
+list<unsigned int> getConnectPix8Dir(unsigned int cur, unsigned int rows, unsigned int cols)
+{
+  list<unsigned int> l;
+  if(cur % cols != 0) {
+    l.push_back(cur - 1);
+    if(cur / rows != 0)
+      l.push_back(cur - 1 - cols);
+    if(cur / rows != rows - 1)
+      l.push_back(cur - 1 + cols);
+  }
+  if(cur % cols != cols - 1) {
+    l.push_back(cur + 1);
+    if(cur / rows != 0)
+      l.push_back(cur + 1 - cols);
+    if(cur / rows != rows - 1)
+      l.push_back(cur + 1 + cols);
+  }
+  if(cur / rows != 0)
+    l.push_back(cur - cols);
+  if(cur / rows != rows - 1)
+    l.push_back(cur + cols);
+
+  list<unsigned int>::iterator it = l.begin();
+  while (it != l.end()) {
+    ++it;
+  }
+  return l;
+}
+
+list<unsigned int> getConnectPix4Dir(unsigned int cur, unsigned int rows, unsigned int cols)
+{
+  list<unsigned int> l;
+  if(cur % cols != 0)
+    l.push_back(cur - 1);
+  if(cur % cols != cols - 1)
+    l.push_back(cur + 1);
+  if(cur / rows != 0)
+    l.push_back(cur - cols);
+  if(cur / rows != rows - 1)
+    l.push_back(cur + cols);
+  return l;
+}
+
+cv::Mat Ccl(const cv::Mat input, unsigned char threshold)
+{
+  int step = 23;
+  cv::Mat dir = input.clone();
+  unsigned int cur, next;
+  unsigned int cNum = 0;
+  unsigned long long* index_mat;
+  unsigned int i;
+  list<unsigned int> conList, tempList;
+  index_mat = (unsigned long long*)malloc(dir.rows * dir.step * sizeof(unsigned long long));
+  for(i = 0; i < dir.rows * dir.step; i++)
+    index_mat[i] = i;
+
+  for(i = 0; i < dir.rows * dir.step; i++) {
+    if (index_mat[i] < i)
+      continue;
+    conList.clear();
+    conList.push_front(i);
+    dir.data[i] = cNum * step % 255;
+    while (!conList.empty()) {
+      cur = conList.back();
+      conList.pop_back();
+
+      tempList = getConnectPix4Dir(cur, input.rows, input.cols);
+      while(!tempList.empty()) {
+        next = tempList.back();
+        tempList.pop_back();
+        if (index_mat[next] <= i)
+          continue;
+        list<unsigned int>::iterator pos;
+        pos = find(conList.begin(), conList.end(), next);
+        if(pos != conList.end())
+          continue;
+        if(abs(input.data[cur] - input.data[next]) > threshold)
+          continue;
+
+        dir.data[next] = cNum * step % 255;
+        index_mat[next] = i;
+        conList.push_front(next);
+      }
+    }
+    cNum++;
+  }
+  
+  return dir;
+}
+
+bool compareMat(const cv::Mat mat1, const cv::Mat mat2)
+{
+  int err = 0;
+  if(mat1.cols!= mat2.cols || mat1.rows != mat2.rows) return false;
+
+  for(int i = 0; i < mat1.rows; i++) {
+    for(int j = 0; j < mat1.cols; j++) {
+      if(abs(mat1.data[j + i * mat1.step] - mat2.data[j + i * mat1.step]) > 1) {
+        /*
+        cout << "diffrent image!" << "cols:" << j << " rows:" << i << endl;
+        cout << "value mat1:" << (int)mat1.data[j + i * mat1.step] << 
+            " value mat2:" << (int)mat2.data[j + i * mat1.step] << endl;
+        cout << "it's uncorrect!" << endl;
+        */
+        //return false;
+        if(err++ > 10) return false;
+      }
+    }
+  }
+  cout << "it's correct!" << endl;
+  return true;
+}
+
+int main(int argc, char* argv[])
+{
+  cv::Mat input;
+  cv::Mat output;
+  int threshold = 10;
+ 
+  if(argc > 1) {
+    input = cv::imread(argv[1], 0);
+  }
+  IplImage ipl_input = input;
+
+  IplImage ipl_out = output;
+
+  cv::Mat ans;
+  ans = Ccl(input, threshold);
+
+  //cvShowImage("", &ipl_out);
+  cv::imwrite("./ans.bmp", ans);
+  cv::imshow("", ans);
+  cv::waitKey(0);
+  return 0;
+}
