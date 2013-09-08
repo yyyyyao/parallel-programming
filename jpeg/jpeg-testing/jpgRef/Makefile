@@ -13,8 +13,8 @@ clean:
 	$(RM) $(TARGET)
 
 run:
-	./$(TARGET) ./sea16x16.png 3
-	#./$(TARGET) ../images/sea256x256.png 3
+	#./$(TARGET) ./sea16x16.png 3
+	./$(TARGET) ../../images/sea256x256.png 3
 gdb:
 	gdb --args ./$(TARGET) ./sea16x16.png 3
 pyc:
