@@ -20,7 +20,8 @@ clean:
 	rm -rf $(TARGET) *.o
 
 run:
-	./tga2jpg ./opencv-logo-150.png ./logo.jpg 80
+	#./tga2jpg ./opencv-logo-150.png ./logo.jpg 80
+	./tga2jpg ../jpeg-testing/jpgRefUpdate/sea16x16.png ./ref16x16.jpg 90
 
 pyc:
 	~/software/bin/pyclewn --cargs "-S ~/.pyclewn_mapping.vim" -a '--args ./$(TARGET) ./opencv-logo-150.png ./logo.jpg 80'
