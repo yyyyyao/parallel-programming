@@ -5,7 +5,7 @@ CFLAGS += `pkg-config --cflags opencv`
 DEBUG += -g
 EXTENSION = cpp
 
-TARGET = jpgRef
+TARGET = main
 $(TARGET): $(TARGET).$(EXTENSION)
 	$(CC) $(DEBUG) -o $(TARGET) $(LDFLAGS) $(CFLAGS) $(TARGET).$(EXTENSION)
 
