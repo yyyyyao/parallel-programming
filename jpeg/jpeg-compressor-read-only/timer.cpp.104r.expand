@@ -1,0 +1,2761 @@
+
+;; Function void query_counter_frequency(timer_ticks*) (_Z23query_counter_frequencyPy)
+
+
+;; Generating RTL for tree basic block 2
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 36)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 pTicks+0 S8 A64])
+        (reg:DI 5 di [ pTicks ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 38)
+
+(insn 8 7 9 3 (set (reg/f:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 pTicks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 9 8 10 3 (set (mem:DI (reg/f:DI 58) [0 S8 A64])
+        (const_int 1000000 [0xf4240])) -1 (nil)
+    (nil))
+
+(note 10 9 11 NOTE_INSN_FUNCTION_END)
+
+(note 11 10 16 ("timer.cpp") 39)
+
+(note 16 11 13 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 13 16 14 4 (set (pc)
+        (label_ref 15)) -1 (nil)
+    (nil))
+
+(barrier 14 13 12)
+
+(code_label 12 14 17 5 1 "" 0 [0 uses])
+
+(note 17 12 15 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 15 17 18 6 2 "" 0 [1 uses])
+
+(note 18 15 0 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+;; Function void timer::start(timer_ticks) (_ZN5timer5startEy)
+
+
+;; Generating RTL for tree basic block 2
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 6 ("timer.cpp") 63)
+
+(note 6 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 6 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(insn 4 3 5 2 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 start_ticks+0 S8 A64])
+        (reg:DI 4 si [ start_ticks ])) -1 (nil)
+    (nil))
+
+(note 5 4 7 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 7 5 8 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 8 7 9 3 ("timer.cpp") 65)
+
+(insn 9 8 10 3 (set (reg/f:DI 58)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 10 9 11 3 (set (reg:DI 59)
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 start_ticks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 11 10 12 3 (set (mem/s/j:DI (reg/f:DI 58) [0 <variable>.m_start_time+0 S8 A64])
+        (reg:DI 59)) -1 (nil)
+    (nil))
+
+(note 12 11 13 3 ("timer.cpp") 67)
+
+(insn 13 12 14 3 (set (reg/f:DI 60)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (set (reg:QI 61)
+        (mem/s/j:QI (plus:DI (reg/f:DI 60)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 15 14 16 3 (parallel [
+            (set (reg:QI 62)
+                (ior:QI (reg:QI 61)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 16 15 17 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 60)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 62)) -1 (nil)
+    (nil))
+
+(note 17 16 18 3 ("timer.cpp") 68)
+
+(insn 18 17 19 3 (set (reg/f:DI 63)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 19 18 20 3 (set (reg:QI 64)
+        (mem/s/j:QI (plus:DI (reg/f:DI 63)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 20 19 21 3 (parallel [
+            (set (reg:QI 65)
+                (and:QI (reg:QI 64)
+                    (const_int -3 [0xfffffffffffffffd])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 21 20 22 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 63)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 65)) -1 (nil)
+    (nil))
+
+(note 22 21 23 NOTE_INSN_FUNCTION_END)
+
+(note 23 22 28 ("timer.cpp") 69)
+
+(note 28 23 25 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 25 28 26 4 (set (pc)
+        (label_ref 27)) -1 (nil)
+    (nil))
+
+(barrier 26 25 24)
+
+(code_label 24 26 29 5 3 "" 0 [0 uses])
+
+(note 29 24 27 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 27 29 30 6 4 "" 0 [1 uses])
+
+(note 30 27 0 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+;; Function void query_counter(timer_ticks*) (_Z13query_counterPy)
+
+Partition 0: size 16 align 16
+	cur_time, offset 0
+
+;; Generating RTL for tree basic block 2
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 30)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 pTicks+0 S8 A64])
+        (reg:DI 5 di [ pTicks ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 33)
+
+(insn 8 7 9 3 (parallel [
+            (set (reg:DI 64)
+                (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                    (const_int -16 [0xfffffffffffffff0])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 9 8 10 3 (set (reg:DI 4 si)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 10 9 11 3 (set (reg:DI 5 di)
+        (reg:DI 64)) -1 (nil)
+    (nil))
+
+(call_insn 11 10 12 3 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("gettimeofday") [flags 0x41] <function_decl 0x100866700 gettimeofday>) [0 S1 A8])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (nil))))
+
+(note 12 11 13 3 ("timer.cpp") 34)
+
+(insn 13 12 14 3 (set (reg:DI 63 [ D.3776 ])
+        (mem/s/j/c:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 cur_time.tv_sec+0 S8 A128])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (set (reg:DI 62 [ D.3777 ])
+        (reg:DI 63 [ D.3776 ])) -1 (nil)
+    (nil))
+
+(insn 15 14 16 3 (parallel [
+            (set (reg:DI 61 [ D.3778 ])
+                (mult:DI (reg:DI 62 [ D.3777 ])
+                    (const_int 1000000 [0xf4240])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 16 15 17 3 (set (reg:SI 60 [ D.3779 ])
+        (mem/s/j/c:SI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 cur_time.tv_usec+0 S4 A64])) -1 (nil)
+    (nil))
+
+(insn 17 16 18 3 (set (reg:DI 59 [ D.3780 ])
+        (sign_extend:DI (reg:SI 60 [ D.3779 ]))) -1 (nil)
+    (nil))
+
+(insn 18 17 19 3 (parallel [
+            (set (reg:DI 58 [ D.3781 ])
+                (plus:DI (reg:DI 61 [ D.3778 ])
+                    (reg:DI 59 [ D.3780 ])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 19 18 20 3 (set (reg/f:DI 65)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 pTicks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 20 19 21 3 (set (mem:DI (reg/f:DI 65) [0 S8 A64])
+        (reg:DI 58 [ D.3781 ])) -1 (nil)
+    (nil))
+
+(note 21 20 22 NOTE_INSN_FUNCTION_END)
+
+(note 22 21 27 ("timer.cpp") 35)
+
+(note 27 22 24 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 24 27 25 4 (set (pc)
+        (label_ref 26)) -1 (nil)
+    (nil))
+
+(barrier 25 24 23)
+
+(code_label 23 25 28 5 5 "" 0 [0 uses])
+
+(note 28 23 26 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 26 28 29 6 6 "" 0 [1 uses])
+
+(note 29 26 0 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+;; Function static void timer::init() (_ZN5timer4initEv)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 4 ("timer.cpp") 116)
+
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 4 3 2 NOTE_INSN_DELETED)
+
+(note 3 2 5 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 5 3 6 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 6 5 7 3 ("timer.cpp") 118)
+
+(insn 7 6 8 3 (set (reg:DF 62 [ g_inv_freq.9 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 8 7 9 3 (set (reg:DF 63)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 9 8 48 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 62 [ g_inv_freq.9 ])
+                        (reg:DF 63))
+                    (label_ref 12)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 48 9 10 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 10 48 11 4 (set (pc)
+        (label_ref 39)) -1 (nil)
+    (nil))
+
+(barrier 11 10 12)
+
+(code_label 12 11 49 5 9 "" 0 [1 uses])
+
+(note 49 12 13 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 13 49 14 6 10 "" 0 [0 uses])
+
+(note 14 13 15 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 15 14 16 6 ("timer.cpp") 120)
+
+(insn 16 15 17 6 (set (reg:DI 5 di)
+        (symbol_ref:DI ("_ZN5timer6g_freqE") [flags 0x1402] <var_decl 0x10086d9a0 g_freq>)) -1 (nil)
+    (nil))
+
+(call_insn 17 16 18 6 (call (mem:QI (symbol_ref/i:DI ("_Z23query_counter_frequencyPy") [flags 0x1] <function_decl 0x10087a100 query_counter_frequency>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (expr_list:REG_EH_REGION (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(note 18 17 19 6 ("timer.cpp") 121)
+
+(insn 19 18 20 6 (set (reg:DI 61 [ g_freq.10 ])
+        (mem/c/i:DI (symbol_ref:DI ("_ZN5timer6g_freqE") [flags 0x1402] <var_decl 0x10086d9a0 g_freq>) [0 g_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 20 19 21 6 (set (reg:CCGOC 17 flags)
+        (compare:CCGOC (reg:DI 61 [ g_freq.10 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 21 20 50 6 (set (pc)
+        (if_then_else (lt (reg:CCGOC 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 25)
+            (pc))) -1 (nil)
+    (nil))
+
+(note 50 21 22 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 22 50 23 7 (set (reg:SF 60 [ D.3876 ])
+        (float:SF (reg:DI 61 [ g_freq.10 ]))) -1 (nil)
+    (nil))
+
+(jump_insn 23 22 24 7 (set (pc)
+        (label_ref 31)) -1 (nil)
+    (nil))
+
+(barrier 24 23 25)
+
+(code_label 25 24 51 8 11 "" 0 [1 uses])
+
+(note 51 25 26 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 26 51 27 8 (parallel [
+            (set (reg:DI 66)
+                (lshiftrt:DI (reg:DI 61 [ g_freq.10 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 27 26 28 8 (parallel [
+            (set (reg:DI 67)
+                (and:DI (reg:DI 61 [ g_freq.10 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 28 27 29 8 (parallel [
+            (set (reg:DI 66)
+                (ior:DI (reg:DI 66)
+                    (reg:DI 67)))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 29 28 30 8 (set (reg:SF 65)
+        (float:SF (reg:DI 66))) -1 (nil)
+    (nil))
+
+(insn 30 29 31 8 (set (reg:SF 60 [ D.3876 ])
+        (plus:SF (reg:SF 65)
+            (reg:SF 65))) -1 (nil)
+    (nil))
+
+(code_label 31 30 52 9 12 "" 0 [1 uses])
+
+(note 52 31 32 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 32 52 33 9 (set (reg:SF 68)
+        (mem/u/c/i:SF (symbol_ref/u:DI ("*LC1") [flags 0x2]) [0 S4 A32])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:SF 1.0e+0 [0x0.8p+1])
+        (nil)))
+
+(insn 33 32 34 9 (set (reg:SF 59 [ D.3877 ])
+        (div:SF (reg:SF 68)
+            (reg:SF 60 [ D.3876 ]))) -1 (nil)
+    (nil))
+
+(insn 34 33 35 9 (set (reg:DF 58 [ D.3878 ])
+        (float_extend:DF (reg:SF 59 [ D.3877 ]))) -1 (nil)
+    (nil))
+
+(insn 35 34 36 9 (set (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])
+        (reg:DF 58 [ D.3878 ])) -1 (nil)
+    (nil))
+
+(note 36 35 37 9 ("timer.cpp") 123)
+
+(insn 37 36 38 9 (set (reg:DI 5 di)
+        (symbol_ref:DI ("_ZN5timer12g_init_ticksE") [flags 0x1402] <var_decl 0x10086d8f0 g_init_ticks>)) -1 (nil)
+    (nil))
+
+(call_insn 38 37 39 9 (call (mem:QI (symbol_ref/i:DI ("_Z13query_counterPy") [flags 0x1] <function_decl 0x10087a000 query_counter>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(code_label 39 38 40 10 8 "" 0 [1 uses])
+
+(note 40 39 41 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(note 41 40 42 NOTE_INSN_FUNCTION_END)
+
+(note 42 41 47 ("timer.cpp") 125)
+
+(note 47 42 44 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 44 47 45 11 (set (pc)
+        (label_ref 46)) -1 (nil)
+    (nil))
+
+(barrier 45 44 43)
+
+(code_label 43 45 53 12 7 "" 0 [0 uses])
+
+(note 53 43 46 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 46 53 54 13 13 "" 0 [1 uses])
+
+(note 54 46 0 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+
+;; Function static double timer::ticks_to_secs(timer_ticks) (_ZN5timer13ticks_to_secsEy)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 145)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 ticks+0 S8 A64])
+        (reg:DI 5 di [ ticks ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 147)
+
+(insn 8 7 9 3 (set (reg:DF 61 [ g_inv_freq.15 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 9 8 10 3 (set (reg:DF 63)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 10 9 50 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 61 [ g_inv_freq.15 ])
+                        (reg:DF 63))
+                    (label_ref 13)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 50 10 11 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 11 50 12 4 (set (pc)
+        (label_ref 18)) -1 (nil)
+    (nil))
+
+(barrier 12 11 13)
+
+(code_label 13 12 51 5 17 "" 0 [1 uses])
+
+(note 51 13 14 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 14 51 15 6 18 "" 0 [0 uses])
+
+(note 15 14 16 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 16 15 17 6 ("timer.cpp") 148)
+
+(call_insn 17 16 18 6 (call (mem:QI (symbol_ref:DI ("_ZN5timer4initEv") [flags 0x403] <function_decl 0x10086c300 init>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (nil))
+
+(code_label 18 17 19 7 16 "" 0 [1 uses])
+
+(note 19 18 20 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 20 19 21 7 ("timer.cpp") 150)
+
+(insn 21 20 22 7 (set (reg:DI 64)
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 ticks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 22 21 23 7 (set (reg:CCGOC 17 flags)
+        (compare:CCGOC (reg:DI 64)
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 23 22 52 7 (set (pc)
+        (if_then_else (lt (reg:CCGOC 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 27)
+            (pc))) -1 (nil)
+    (nil))
+
+(note 52 23 24 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 24 52 25 8 (set (reg:DF 59 [ D.3898 ])
+        (float:DF (reg:DI 64))) -1 (nil)
+    (nil))
+
+(jump_insn 25 24 26 8 (set (pc)
+        (label_ref 33)) -1 (nil)
+    (nil))
+
+(barrier 26 25 27)
+
+(code_label 27 26 53 9 19 "" 0 [1 uses])
+
+(note 53 27 28 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 28 53 29 9 (parallel [
+            (set (reg:DI 67)
+                (lshiftrt:DI (reg:DI 64)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 29 28 30 9 (parallel [
+            (set (reg:DI 68)
+                (and:DI (reg:DI 64)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 30 29 31 9 (parallel [
+            (set (reg:DI 67)
+                (ior:DI (reg:DI 67)
+                    (reg:DI 68)))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 31 30 32 9 (set (reg:DF 66)
+        (float:DF (reg:DI 67))) -1 (nil)
+    (nil))
+
+(insn 32 31 33 9 (set (reg:DF 59 [ D.3898 ])
+        (plus:DF (reg:DF 66)
+            (reg:DF 66))) -1 (nil)
+    (nil))
+
+(code_label 33 32 54 10 20 "" 0 [1 uses])
+
+(note 54 33 34 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 34 54 35 10 (set (reg:DF 58 [ g_inv_freq.16 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 35 34 36 10 (set (reg:DF 60 [ D.3897 ])
+        (mult:DF (reg:DF 59 [ D.3898 ])
+            (reg:DF 58 [ g_inv_freq.16 ]))) -1 (nil)
+    (nil))
+
+(insn 36 35 37 10 (set (reg:DF 62 [ <result> ])
+        (reg:DF 60 [ D.3897 ])) -1 (nil)
+    (nil))
+
+(jump_insn 37 36 38 10 (set (pc)
+        (label_ref 41)) -1 (nil)
+    (nil))
+
+(barrier 38 37 39)
+
+(note 39 38 40 NOTE_INSN_FUNCTION_END)
+
+(note 40 39 49 ("timer.cpp") 151)
+
+(note 49 40 43 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(insn 43 49 44 11 (clobber (reg/i:DF 21 xmm0)) -1 (nil)
+    (nil))
+
+(insn 44 43 45 11 (clobber (reg:DF 62 [ <result> ])) -1 (nil)
+    (nil))
+
+(jump_insn 45 44 46 11 (set (pc)
+        (label_ref 47)) -1 (nil)
+    (nil))
+
+(barrier 46 45 41)
+
+(code_label 41 46 55 12 15 "" 0 [1 uses])
+
+(note 55 41 42 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(insn 42 55 47 12 (set (reg/i:DF 21 xmm0)
+        (reg:DF 62 [ <result> ])) -1 (nil)
+    (nil))
+
+(code_label 47 42 56 13 21 "" 0 [1 uses])
+
+(note 56 47 48 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+
+(insn 48 56 0 13 (use (reg/i:DF 21 xmm0)) -1 (nil)
+    (nil))
+
+;; Function static timer_ticks timer::get_ticks() (_ZN5timer9get_ticksEv)
+
+Partition 0: size 8 align 8
+	ticks, offset 0
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 4 ("timer.cpp") 135)
+
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 4 3 2 NOTE_INSN_DELETED)
+
+(note 3 2 5 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 5 3 6 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 6 5 7 3 ("timer.cpp") 137)
+
+(insn 7 6 8 3 (set (reg:DF 61 [ g_inv_freq.12 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 8 7 9 3 (set (reg:DF 63)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 9 8 41 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 61 [ g_inv_freq.12 ])
+                        (reg:DF 63))
+                    (label_ref 12)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 41 9 10 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 10 41 11 4 (set (pc)
+        (label_ref 17)) -1 (nil)
+    (nil))
+
+(barrier 11 10 12)
+
+(code_label 12 11 42 5 25 "" 0 [1 uses])
+
+(note 42 12 13 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 13 42 14 6 26 "" 0 [0 uses])
+
+(note 14 13 15 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 15 14 16 6 ("timer.cpp") 138)
+
+(call_insn 16 15 17 6 (call (mem:QI (symbol_ref:DI ("_ZN5timer4initEv") [flags 0x403] <function_decl 0x10086c300 init>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (nil))
+
+(code_label 17 16 18 7 24 "" 0 [1 uses])
+
+(note 18 17 19 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 19 18 20 7 ("timer.cpp") 141)
+
+(insn 20 19 21 7 (parallel [
+            (set (reg:DI 64)
+                (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 21 20 22 7 (set (reg:DI 5 di)
+        (reg:DI 64)) -1 (nil)
+    (nil))
+
+(call_insn 22 21 23 7 (call (mem:QI (symbol_ref/i:DI ("_Z13query_counterPy") [flags 0x1] <function_decl 0x10087a000 query_counter>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(note 23 22 24 7 ("timer.cpp") 142)
+
+(insn 24 23 25 7 (set (reg:DI 59 [ ticks.13 ])
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 ticks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 25 24 26 7 (set (reg:DI 58 [ g_init_ticks.14 ])
+        (mem/c/i:DI (symbol_ref:DI ("_ZN5timer12g_init_ticksE") [flags 0x1402] <var_decl 0x10086d8f0 g_init_ticks>) [0 g_init_ticks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 26 25 27 7 (parallel [
+            (set (reg:DI 60 [ D.3889 ])
+                (minus:DI (reg:DI 59 [ ticks.13 ])
+                    (reg:DI 58 [ g_init_ticks.14 ])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 27 26 28 7 (set (reg:DI 62 [ <result> ])
+        (reg:DI 60 [ D.3889 ])) -1 (nil)
+    (nil))
+
+(jump_insn 28 27 29 7 (set (pc)
+        (label_ref 32)) -1 (nil)
+    (nil))
+
+(barrier 29 28 30)
+
+(note 30 29 31 NOTE_INSN_FUNCTION_END)
+
+(note 31 30 40 ("timer.cpp") 143)
+
+(note 40 31 34 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 34 40 35 8 (clobber (reg/i:DI 0 ax)) -1 (nil)
+    (nil))
+
+(insn 35 34 36 8 (clobber (reg:DI 62 [ <result> ])) -1 (nil)
+    (nil))
+
+(jump_insn 36 35 37 8 (set (pc)
+        (label_ref 38)) -1 (nil)
+    (nil))
+
+(barrier 37 36 32)
+
+(code_label 32 37 43 9 23 "" 0 [1 uses])
+
+(note 43 32 33 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 33 43 38 9 (set (reg/i:DI 0 ax)
+        (reg:DI 62 [ <result> ])) -1 (nil)
+    (nil))
+
+(code_label 38 33 44 10 27 "" 0 [1 uses])
+
+(note 44 38 39 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 39 44 0 10 (use (reg/i:DI 0 ax)) -1 (nil)
+    (nil))
+
+;; Function static timer_ticks timer::get_init_ticks() (_ZN5timer14get_init_ticksEv)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 4 ("timer.cpp") 127)
+
+(note 4 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 4 3 2 NOTE_INSN_DELETED)
+
+(note 3 2 5 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 5 3 6 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 6 5 7 3 ("timer.cpp") 129)
+
+(insn 7 6 8 3 (set (reg:DF 59 [ g_inv_freq.11 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 8 7 9 3 (set (reg:DF 61)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 9 8 35 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 59 [ g_inv_freq.11 ])
+                        (reg:DF 61))
+                    (label_ref 12)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 35 9 10 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 10 35 11 4 (set (pc)
+        (label_ref 17)) -1 (nil)
+    (nil))
+
+(barrier 11 10 12)
+
+(code_label 12 11 36 5 31 "" 0 [1 uses])
+
+(note 36 12 13 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 13 36 14 6 32 "" 0 [0 uses])
+
+(note 14 13 15 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 15 14 16 6 ("timer.cpp") 130)
+
+(call_insn 16 15 17 6 (call (mem:QI (symbol_ref:DI ("_ZN5timer4initEv") [flags 0x403] <function_decl 0x10086c300 init>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (nil))
+
+(code_label 17 16 18 7 30 "" 0 [1 uses])
+
+(note 18 17 19 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 19 18 20 7 ("timer.cpp") 132)
+
+(insn 20 19 21 7 (set (reg:DI 58 [ D.3883 ])
+        (mem/c/i:DI (symbol_ref:DI ("_ZN5timer12g_init_ticksE") [flags 0x1402] <var_decl 0x10086d8f0 g_init_ticks>) [0 g_init_ticks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 21 20 22 7 (set (reg:DI 60 [ <result> ])
+        (reg:DI 58 [ D.3883 ])) -1 (nil)
+    (nil))
+
+(jump_insn 22 21 23 7 (set (pc)
+        (label_ref 26)) -1 (nil)
+    (nil))
+
+(barrier 23 22 24)
+
+(note 24 23 25 NOTE_INSN_FUNCTION_END)
+
+(note 25 24 34 ("timer.cpp") 133)
+
+(note 34 25 28 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 28 34 29 8 (clobber (reg/i:DI 0 ax)) -1 (nil)
+    (nil))
+
+(insn 29 28 30 8 (clobber (reg:DI 60 [ <result> ])) -1 (nil)
+    (nil))
+
+(jump_insn 30 29 31 8 (set (pc)
+        (label_ref 32)) -1 (nil)
+    (nil))
+
+(barrier 31 30 26)
+
+(code_label 26 31 37 9 29 "" 0 [1 uses])
+
+(note 37 26 27 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 27 37 32 9 (set (reg/i:DI 0 ax)
+        (reg:DI 60 [ <result> ])) -1 (nil)
+    (nil))
+
+(code_label 32 27 38 10 33 "" 0 [1 uses])
+
+(note 38 32 33 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 33 38 0 10 (use (reg/i:DI 0 ax)) -1 (nil)
+    (nil))
+
+;; Function timer::timer(timer_ticks) (_ZN5timerC1Ey)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 6 ("timer.cpp") 52)
+
+(note 6 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 6 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(insn 4 3 5 2 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 start_ticks+0 S8 A64])
+        (reg:DI 4 si [ start_ticks ])) -1 (nil)
+    (nil))
+
+(note 5 4 7 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 7 5 8 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 8 7 9 3 ("timer.cpp") 54)
+
+(insn 9 8 10 3 (set (reg:DF 58 [ g_inv_freq.3 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 10 9 11 3 (set (reg:DF 59)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 11 10 42 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 58 [ g_inv_freq.3 ])
+                        (reg:DF 59))
+                    (label_ref 14)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 42 11 12 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 12 42 13 4 (set (pc)
+        (label_ref 19)) -1 (nil)
+    (nil))
+
+(barrier 13 12 14)
+
+(code_label 14 13 43 5 37 "" 0 [1 uses])
+
+(note 43 14 15 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 15 43 16 6 38 "" 0 [0 uses])
+
+(note 16 15 17 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 17 16 18 6 ("timer.cpp") 55)
+
+(call_insn 18 17 19 6 (call (mem:QI (symbol_ref:DI ("_ZN5timer4initEv") [flags 0x403] <function_decl 0x10086c300 init>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (nil))
+
+(code_label 19 18 20 7 36 "" 0 [1 uses])
+
+(note 20 19 21 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 21 20 22 7 ("timer.cpp") 57)
+
+(insn 22 21 23 7 (set (reg/f:DI 60)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 23 22 24 7 (set (reg:DI 61)
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 start_ticks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 24 23 25 7 (set (mem/s/j:DI (reg/f:DI 60) [0 <variable>.m_start_time+0 S8 A64])
+        (reg:DI 61)) -1 (nil)
+    (nil))
+
+(note 25 24 26 7 ("timer.cpp") 59)
+
+(insn 26 25 27 7 (set (reg/f:DI 62)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 27 26 28 7 (set (reg:QI 63)
+        (mem/s/j:QI (plus:DI (reg/f:DI 62)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 28 27 29 7 (parallel [
+            (set (reg:QI 64)
+                (ior:QI (reg:QI 63)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 29 28 30 7 (set (mem/s/j:QI (plus:DI (reg/f:DI 62)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 64)) -1 (nil)
+    (nil))
+
+(note 30 29 31 7 ("timer.cpp") 60)
+
+(insn 31 30 32 7 (set (reg/f:DI 65)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 32 31 33 7 (set (reg:QI 66)
+        (mem/s/j:QI (plus:DI (reg/f:DI 65)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 33 32 34 7 (parallel [
+            (set (reg:QI 67)
+                (and:QI (reg:QI 66)
+                    (const_int -3 [0xfffffffffffffffd])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 34 33 35 7 (set (mem/s/j:QI (plus:DI (reg/f:DI 65)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 67)) -1 (nil)
+    (nil))
+
+(note 35 34 36 NOTE_INSN_FUNCTION_END)
+
+(note 36 35 41 ("timer.cpp") 61)
+
+(note 41 36 38 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 38 41 39 8 (set (pc)
+        (label_ref 40)) -1 (nil)
+    (nil))
+
+(barrier 39 38 37)
+
+(code_label 37 39 44 9 35 "" 0 [0 uses])
+
+(note 44 37 40 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 40 44 45 10 39 "" 0 [1 uses])
+
+(note 45 40 0 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+;; Function timer::timer(timer_ticks) (_ZN5timerC2Ey)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 6 ("timer.cpp") 52)
+
+(note 6 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 6 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(insn 4 3 5 2 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 start_ticks+0 S8 A64])
+        (reg:DI 4 si [ start_ticks ])) -1 (nil)
+    (nil))
+
+(note 5 4 7 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 7 5 8 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 8 7 9 3 ("timer.cpp") 54)
+
+(insn 9 8 10 3 (set (reg:DF 58 [ g_inv_freq.3 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 10 9 11 3 (set (reg:DF 59)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 11 10 42 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 58 [ g_inv_freq.3 ])
+                        (reg:DF 59))
+                    (label_ref 14)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 42 11 12 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 12 42 13 4 (set (pc)
+        (label_ref 19)) -1 (nil)
+    (nil))
+
+(barrier 13 12 14)
+
+(code_label 14 13 43 5 43 "" 0 [1 uses])
+
+(note 43 14 15 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 15 43 16 6 44 "" 0 [0 uses])
+
+(note 16 15 17 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 17 16 18 6 ("timer.cpp") 55)
+
+(call_insn 18 17 19 6 (call (mem:QI (symbol_ref:DI ("_ZN5timer4initEv") [flags 0x403] <function_decl 0x10086c300 init>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (nil))
+
+(code_label 19 18 20 7 42 "" 0 [1 uses])
+
+(note 20 19 21 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 21 20 22 7 ("timer.cpp") 57)
+
+(insn 22 21 23 7 (set (reg/f:DI 60)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 23 22 24 7 (set (reg:DI 61)
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 start_ticks+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 24 23 25 7 (set (mem/s/j:DI (reg/f:DI 60) [0 <variable>.m_start_time+0 S8 A64])
+        (reg:DI 61)) -1 (nil)
+    (nil))
+
+(note 25 24 26 7 ("timer.cpp") 59)
+
+(insn 26 25 27 7 (set (reg/f:DI 62)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 27 26 28 7 (set (reg:QI 63)
+        (mem/s/j:QI (plus:DI (reg/f:DI 62)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 28 27 29 7 (parallel [
+            (set (reg:QI 64)
+                (ior:QI (reg:QI 63)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 29 28 30 7 (set (mem/s/j:QI (plus:DI (reg/f:DI 62)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 64)) -1 (nil)
+    (nil))
+
+(note 30 29 31 7 ("timer.cpp") 60)
+
+(insn 31 30 32 7 (set (reg/f:DI 65)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 32 31 33 7 (set (reg:QI 66)
+        (mem/s/j:QI (plus:DI (reg/f:DI 65)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 33 32 34 7 (parallel [
+            (set (reg:QI 67)
+                (and:QI (reg:QI 66)
+                    (const_int -3 [0xfffffffffffffffd])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 34 33 35 7 (set (mem/s/j:QI (plus:DI (reg/f:DI 65)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 67)) -1 (nil)
+    (nil))
+
+(note 35 34 36 NOTE_INSN_FUNCTION_END)
+
+(note 36 35 41 ("timer.cpp") 61)
+
+(note 41 36 38 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 38 41 39 8 (set (pc)
+        (label_ref 40)) -1 (nil)
+    (nil))
+
+(barrier 39 38 37)
+
+(code_label 37 39 44 9 41 "" 0 [0 uses])
+
+(note 44 37 40 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 40 44 45 10 45 "" 0 [1 uses])
+
+(note 45 40 0 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+;; Function timer::timer() (_ZN5timerC1Ev)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 42)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 46)
+
+(insn 8 7 9 3 (set (reg/f:DI 59)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 9 8 10 3 (set (mem/s/j:DI (reg/f:DI 59) [0 <variable>.m_start_time+0 S8 A64])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 10 9 11 3 (set (reg/f:DI 60)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 11 10 12 3 (set (mem/s/j:DI (plus:DI (reg/f:DI 60)
+                (const_int 8 [0x8])) [0 <variable>.m_stop_time+0 S8 A64])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 12 11 13 3 (set (reg/f:DI 61)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 13 12 14 3 (set (reg:QI 62)
+        (mem/s/j:QI (plus:DI (reg/f:DI 61)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (parallel [
+            (set (reg:QI 63)
+                (and:QI (reg:QI 62)
+                    (const_int -2 [0xfffffffffffffffe])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 15 14 16 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 61)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 63)) -1 (nil)
+    (nil))
+
+(insn 16 15 17 3 (set (reg/f:DI 64)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 17 16 18 3 (set (reg:QI 65)
+        (mem/s/j:QI (plus:DI (reg/f:DI 64)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 18 17 19 3 (parallel [
+            (set (reg:QI 66)
+                (and:QI (reg:QI 65)
+                    (const_int -3 [0xfffffffffffffffd])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 19 18 20 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 64)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 66)) -1 (nil)
+    (nil))
+
+(note 20 19 21 3 ("timer.cpp") 48)
+
+(insn 21 20 22 3 (set (reg:DF 58 [ g_inv_freq.2 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 22 21 23 3 (set (reg:DF 67)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 23 22 40 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 58 [ g_inv_freq.2 ])
+                        (reg:DF 67))
+                    (label_ref 26)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 40 23 24 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 24 40 25 4 (set (pc)
+        (label_ref 31)) -1 (nil)
+    (nil))
+
+(barrier 25 24 26)
+
+(code_label 26 25 41 5 49 "" 0 [1 uses])
+
+(note 41 26 27 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 27 41 28 6 50 "" 0 [0 uses])
+
+(note 28 27 29 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 29 28 30 6 ("timer.cpp") 49)
+
+(call_insn 30 29 31 6 (call (mem:QI (symbol_ref:DI ("_ZN5timer4initEv") [flags 0x403] <function_decl 0x10086c300 init>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (nil))
+
+(code_label 31 30 32 7 48 "" 0 [1 uses])
+
+(note 32 31 33 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 33 32 34 NOTE_INSN_FUNCTION_END)
+
+(note 34 33 39 ("timer.cpp") 50)
+
+(note 39 34 36 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 36 39 37 8 (set (pc)
+        (label_ref 38)) -1 (nil)
+    (nil))
+
+(barrier 37 36 35)
+
+(code_label 35 37 42 9 47 "" 0 [0 uses])
+
+(note 42 35 38 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 38 42 43 10 51 "" 0 [1 uses])
+
+(note 43 38 0 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+;; Function timer::timer() (_ZN5timerC2Ev)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+Purged non-fallthru edges from bb 8
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 42)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 46)
+
+(insn 8 7 9 3 (set (reg/f:DI 59)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 9 8 10 3 (set (mem/s/j:DI (reg/f:DI 59) [0 <variable>.m_start_time+0 S8 A64])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 10 9 11 3 (set (reg/f:DI 60)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 11 10 12 3 (set (mem/s/j:DI (plus:DI (reg/f:DI 60)
+                (const_int 8 [0x8])) [0 <variable>.m_stop_time+0 S8 A64])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 12 11 13 3 (set (reg/f:DI 61)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 13 12 14 3 (set (reg:QI 62)
+        (mem/s/j:QI (plus:DI (reg/f:DI 61)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (parallel [
+            (set (reg:QI 63)
+                (and:QI (reg:QI 62)
+                    (const_int -2 [0xfffffffffffffffe])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 15 14 16 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 61)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 63)) -1 (nil)
+    (nil))
+
+(insn 16 15 17 3 (set (reg/f:DI 64)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 17 16 18 3 (set (reg:QI 65)
+        (mem/s/j:QI (plus:DI (reg/f:DI 64)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 18 17 19 3 (parallel [
+            (set (reg:QI 66)
+                (and:QI (reg:QI 65)
+                    (const_int -3 [0xfffffffffffffffd])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 19 18 20 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 64)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 66)) -1 (nil)
+    (nil))
+
+(note 20 19 21 3 ("timer.cpp") 48)
+
+(insn 21 20 22 3 (set (reg:DF 58 [ g_inv_freq.2 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 22 21 23 3 (set (reg:DF 67)
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 23 22 40 3 (parallel [
+            (set (pc)
+                (if_then_else (eq (reg:DF 58 [ g_inv_freq.2 ])
+                        (reg:DF 67))
+                    (label_ref 26)
+                    (pc)))
+            (clobber (reg:CCFP 18 fpsr))
+            (clobber (reg:CCFP 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(note 40 23 24 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 24 40 25 4 (set (pc)
+        (label_ref 31)) -1 (nil)
+    (nil))
+
+(barrier 25 24 26)
+
+(code_label 26 25 41 5 55 "" 0 [1 uses])
+
+(note 41 26 27 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 27 41 28 6 56 "" 0 [0 uses])
+
+(note 28 27 29 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 29 28 30 6 ("timer.cpp") 49)
+
+(call_insn 30 29 31 6 (call (mem:QI (symbol_ref:DI ("_ZN5timer4initEv") [flags 0x403] <function_decl 0x10086c300 init>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (nil))
+
+(code_label 31 30 32 7 54 "" 0 [1 uses])
+
+(note 32 31 33 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 33 32 34 NOTE_INSN_FUNCTION_END)
+
+(note 34 33 39 ("timer.cpp") 50)
+
+(note 39 34 36 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 36 39 37 8 (set (pc)
+        (label_ref 38)) -1 (nil)
+    (nil))
+
+(barrier 37 36 35)
+
+(code_label 35 37 42 9 53 "" 0 [0 uses])
+
+(note 42 35 38 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 38 42 43 10 57 "" 0 [1 uses])
+
+(note 43 38 0 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+;; Function void timer::start() (_ZN5timer5startEv)
+
+
+;; Generating RTL for tree basic block 2
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 71)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 73)
+
+(insn 8 7 9 3 (set (reg:DI 58 [ D.3818 ])
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 9 8 10 3 (set (reg:DI 5 di)
+        (reg:DI 58 [ D.3818 ])) -1 (nil)
+    (nil))
+
+(call_insn 10 9 11 3 (call (mem:QI (symbol_ref/i:DI ("_Z13query_counterPy") [flags 0x1] <function_decl 0x10087a000 query_counter>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(note 11 10 12 3 ("timer.cpp") 75)
+
+(insn 12 11 13 3 (set (reg/f:DI 59)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 13 12 14 3 (set (reg:QI 60)
+        (mem/s/j:QI (plus:DI (reg/f:DI 59)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (parallel [
+            (set (reg:QI 61)
+                (ior:QI (reg:QI 60)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 15 14 16 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 59)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 61)) -1 (nil)
+    (nil))
+
+(note 16 15 17 3 ("timer.cpp") 76)
+
+(insn 17 16 18 3 (set (reg/f:DI 62)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 18 17 19 3 (set (reg:QI 63)
+        (mem/s/j:QI (plus:DI (reg/f:DI 62)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 19 18 20 3 (parallel [
+            (set (reg:QI 64)
+                (and:QI (reg:QI 63)
+                    (const_int -3 [0xfffffffffffffffd])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 20 19 21 3 (set (mem/s/j:QI (plus:DI (reg/f:DI 62)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 64)) -1 (nil)
+    (nil))
+
+(note 21 20 22 NOTE_INSN_FUNCTION_END)
+
+(note 22 21 27 ("timer.cpp") 77)
+
+(note 27 22 24 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 24 27 25 4 (set (pc)
+        (label_ref 26)) -1 (nil)
+    (nil))
+
+(barrier 25 24 23)
+
+(code_label 23 25 28 5 59 "" 0 [0 uses])
+
+(note 28 23 26 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 26 28 29 6 60 "" 0 [1 uses])
+
+(note 29 26 0 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+;; Function timer_ticks timer::get_elapsed_us() const (_ZNK5timer14get_elapsed_usEv)
+
+Partition 1: size 8 align 8
+	stop_time, offset 0
+Partition 0: size 8 align 8
+	delta, offset 0
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+
+;; Generating RTL for tree basic block 5
+
+;; Generating RTL for tree basic block 6
+
+;; Generating RTL for tree basic block 7
+
+;; Generating RTL for tree basic block 8
+
+;; Generating RTL for tree basic block 9
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 102)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 104)
+
+(insn 8 7 10 3 (set (reg/f:DI 76)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 10 8 11 3 (parallel [
+            (set (reg:QI 74 [ D.3854 ])
+                (and:QI (mem/s:QI (plus:DI (reg/f:DI 76)
+                            (const_int 16 [0x10])) [0 S1 A64])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 11 10 12 3 (parallel [
+            (set (reg:QI 73 [ D.3855 ])
+                (xor:QI (reg:QI 74 [ D.3854 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 12 11 13 3 (set (reg:DI 72 [ D.3856 ])
+        (zero_extend:DI (reg:QI 73 [ D.3855 ]))) -1 (nil)
+    (nil))
+
+(insn 13 12 14 3 (set (reg:DI 71 [ D.3857 ])
+        (reg:DI 72 [ D.3856 ])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:DI 71 [ D.3857 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 15 14 16 3 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 24)
+            (pc))) -1 (nil)
+    (nil))
+
+(code_label 16 15 17 4 63 "" 0 [0 uses])
+
+(note 17 16 18 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 18 17 19 4 (set (reg:DI 2 cx)
+        (symbol_ref/f:DI ("*LC2") [flags 0x2] <string_cst 0x1008dddb0>)) -1 (nil)
+    (nil))
+
+(insn 19 18 20 4 (set (reg:SI 1 dx)
+        (const_int 104 [0x68])) -1 (nil)
+    (nil))
+
+(insn 20 19 21 4 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*LC3") [flags 0x2] <string_cst 0x1008dde10>)) -1 (nil)
+    (nil))
+
+(insn 21 20 22 4 (set (reg:DI 5 di)
+        (symbol_ref:DI ("_ZZNK5timer14get_elapsed_usEvE8__func__") [flags 0x1c02] <var_decl 0x10088ef20 __func__>)) -1 (nil)
+    (nil))
+
+(call_insn 22 21 23 4 (call (mem:QI (symbol_ref:DI ("__assert_rtn") [flags 0x41] <function_decl 0x10084f100 __assert_rtn>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (expr_list:REG_NORETURN (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 1 dx))
+                (expr_list:REG_DEP_TRUE (use (reg:DI 2 cx))
+                    (nil))))))
+
+(barrier 23 22 24)
+
+(code_label 24 23 25 5 62 "" 0 [1 uses])
+
+(note 25 24 26 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(note 26 25 27 5 ("timer.cpp") 105)
+
+(insn 27 26 29 5 (set (reg/f:DI 78)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 29 27 30 5 (parallel [
+            (set (reg:QI 70 [ D.3858 ])
+                (and:QI (mem/s:QI (plus:DI (reg/f:DI 78)
+                            (const_int 16 [0x10])) [0 S1 A64])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 30 29 31 5 (parallel [
+            (set (reg:QI 69 [ D.3859 ])
+                (xor:QI (reg:QI 70 [ D.3858 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 31 30 32 5 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:QI 69 [ D.3859 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 32 31 33 5 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 39)
+            (pc))) -1 (nil)
+    (nil))
+
+(code_label 33 32 34 6 65 "" 0 [0 uses])
+
+(note 34 33 35 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 35 34 36 6 ("timer.cpp") 106)
+
+(insn 36 35 37 6 (set (reg:DI 68 [ D.3860 ])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(jump_insn 37 36 38 6 (set (pc)
+        (label_ref 77)) -1 (nil)
+    (nil))
+
+(barrier 38 37 39)
+
+(code_label 39 38 40 7 64 "" 0 [1 uses])
+
+(note 40 39 41 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 41 40 42 7 ("timer.cpp") 108)
+
+(insn 42 41 43 7 (set (reg/f:DI 80)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 43 42 44 7 (set (reg:DI 67 [ D.3861 ])
+        (mem/s/j:DI (plus:DI (reg/f:DI 80)
+                (const_int 8 [0x8])) [0 <variable>.m_stop_time+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 44 43 45 7 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 stop_time+0 S8 A64])
+        (reg:DI 67 [ D.3861 ])) -1 (nil)
+    (nil))
+
+(note 45 44 46 7 ("timer.cpp") 109)
+
+(insn 46 45 48 7 (set (reg/f:DI 81)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 48 46 49 7 (set (reg:QI 83)
+        (mem/s:QI (plus:DI (reg/f:DI 81)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 49 48 50 7 (parallel [
+            (set (reg:QI 66 [ D.3862 ])
+                (lshiftrt:QI (reg:QI 83)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (expr_list:REG_EQUAL (lshiftrt:QI (mem/s:QI (plus:DI (reg/f:DI 81)
+                    (const_int 16 [0x10])) [0 S1 A64])
+            (const_int 1 [0x1]))
+        (nil)))
+
+(insn 50 49 51 7 (parallel [
+            (set (reg:QI 66 [ D.3862 ])
+                (and:QI (reg:QI 66 [ D.3862 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 51 50 52 7 (parallel [
+            (set (reg:QI 65 [ D.3863 ])
+                (xor:QI (reg:QI 66 [ D.3862 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 52 51 53 7 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:QI 65 [ D.3863 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 53 52 54 7 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 60)
+            (pc))) -1 (nil)
+    (nil))
+
+(code_label 54 53 55 8 68 "" 0 [0 uses])
+
+(note 55 54 56 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(note 56 55 57 8 ("timer.cpp") 110)
+
+(insn 57 56 58 8 (parallel [
+            (set (reg:DI 84)
+                (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 58 57 59 8 (set (reg:DI 5 di)
+        (reg:DI 84)) -1 (nil)
+    (nil))
+
+(call_insn 59 58 60 8 (call (mem:QI (symbol_ref/i:DI ("_Z13query_counterPy") [flags 0x1] <function_decl 0x10087a000 query_counter>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(code_label 60 59 61 9 67 "" 0 [1 uses])
+
+(note 61 60 62 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(note 62 61 63 9 ("timer.cpp") 112)
+
+(insn 63 62 64 9 (set (reg:DI 64 [ stop_time.6 ])
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 stop_time+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 64 63 65 9 (set (reg/f:DI 85)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 65 64 66 9 (set (reg:DI 63 [ D.3865 ])
+        (mem/s/j:DI (reg/f:DI 85) [0 <variable>.m_start_time+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 66 65 67 9 (parallel [
+            (set (reg:DI 86)
+                (minus:DI (reg:DI 64 [ stop_time.6 ])
+                    (reg:DI 63 [ D.3865 ])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 67 66 68 9 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 delta+0 S8 A128])
+        (reg:DI 86)) -1 (nil)
+    (expr_list:REG_EQUAL (minus:DI (reg:DI 64 [ stop_time.6 ])
+            (reg:DI 63 [ D.3865 ]))
+        (nil)))
+
+(note 68 67 69 9 ("timer.cpp") 113)
+
+(insn 69 68 70 9 (set (reg:DI 87)
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 delta+0 S8 A128])) -1 (nil)
+    (nil))
+
+(insn 70 69 71 9 (parallel [
+            (set (reg:DI 62 [ D.3866 ])
+                (mult:DI (reg:DI 87)
+                    (const_int 1000000 [0xf4240])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 71 70 72 9 (set (reg:DI 61 [ g_freq.7 ])
+        (mem/c/i:DI (symbol_ref:DI ("_ZN5timer6g_freqE") [flags 0x1402] <var_decl 0x10086d9a0 g_freq>) [0 g_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 72 71 73 9 (parallel [
+            (set (reg:DI 60 [ D.3868 ])
+                (lshiftrt:DI (reg:DI 61 [ g_freq.7 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 73 72 74 9 (parallel [
+            (set (reg:DI 59 [ D.3869 ])
+                (plus:DI (reg:DI 62 [ D.3866 ])
+                    (reg:DI 60 [ D.3868 ])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 74 73 75 9 (set (reg:DI 58 [ g_freq.8 ])
+        (mem/c/i:DI (symbol_ref:DI ("_ZN5timer6g_freqE") [flags 0x1402] <var_decl 0x10086d9a0 g_freq>) [0 g_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 75 74 76 9 (parallel [
+            (set (reg:DI 88)
+                (udiv:DI (reg:DI 59 [ D.3869 ])
+                    (reg:DI 58 [ g_freq.8 ])))
+            (set (reg:DI 89)
+                (umod:DI (reg:DI 59 [ D.3869 ])
+                    (reg:DI 58 [ g_freq.8 ])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 76 75 77 9 (set (reg:DI 68 [ D.3860 ])
+        (reg:DI 88)) -1 (nil)
+    (nil))
+
+(code_label 77 76 78 10 66 "" 0 [1 uses])
+
+(note 78 77 79 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 79 78 80 10 (set (reg:DI 75 [ <result> ])
+        (reg:DI 68 [ D.3860 ])) -1 (nil)
+    (nil))
+
+(jump_insn 80 79 81 10 (set (pc)
+        (label_ref 84)) -1 (nil)
+    (nil))
+
+(barrier 81 80 82)
+
+(note 82 81 83 NOTE_INSN_FUNCTION_END)
+
+(note 83 82 92 ("timer.cpp") 114)
+
+(note 92 83 86 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(insn 86 92 87 11 (clobber (reg/i:DI 0 ax)) -1 (nil)
+    (nil))
+
+(insn 87 86 88 11 (clobber (reg:DI 75 [ <result> ])) -1 (nil)
+    (nil))
+
+(jump_insn 88 87 89 11 (set (pc)
+        (label_ref 90)) -1 (nil)
+    (nil))
+
+(barrier 89 88 84)
+
+(code_label 84 89 93 12 61 "" 0 [1 uses])
+
+(note 93 84 85 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(insn 85 93 90 12 (set (reg/i:DI 0 ax)
+        (reg:DI 75 [ <result> ])) -1 (nil)
+    (nil))
+
+(code_label 90 85 94 13 69 "" 0 [1 uses])
+
+(note 94 90 91 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+
+(insn 91 94 0 13 (use (reg/i:DI 0 ax)) -1 (nil)
+    (nil))
+
+;; Function double timer::get_elapsed_secs() const (_ZNK5timer16get_elapsed_secsEv)
+
+Partition 1: size 8 align 8
+	stop_time, offset 0
+Partition 0: size 8 align 8
+	delta, offset 0
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+
+;; Generating RTL for tree basic block 5
+
+;; Generating RTL for tree basic block 6
+
+;; Generating RTL for tree basic block 7
+
+;; Generating RTL for tree basic block 8
+
+;; Generating RTL for tree basic block 9
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 88)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 90)
+
+(insn 8 7 10 3 (set (reg/f:DI 73)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 10 8 11 3 (parallel [
+            (set (reg:QI 71 [ D.3834 ])
+                (and:QI (mem/s:QI (plus:DI (reg/f:DI 73)
+                            (const_int 16 [0x10])) [0 S1 A64])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 11 10 12 3 (parallel [
+            (set (reg:QI 70 [ D.3835 ])
+                (xor:QI (reg:QI 71 [ D.3834 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 12 11 13 3 (set (reg:DI 69 [ D.3836 ])
+        (zero_extend:DI (reg:QI 70 [ D.3835 ]))) -1 (nil)
+    (nil))
+
+(insn 13 12 14 3 (set (reg:DI 68 [ D.3837 ])
+        (reg:DI 69 [ D.3836 ])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:DI 68 [ D.3837 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 15 14 16 3 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 24)
+            (pc))) -1 (nil)
+    (nil))
+
+(code_label 16 15 17 4 72 "" 0 [0 uses])
+
+(note 17 16 18 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 18 17 19 4 (set (reg:DI 2 cx)
+        (symbol_ref/f:DI ("*LC2") [flags 0x2] <string_cst 0x1008dddb0>)) -1 (nil)
+    (nil))
+
+(insn 19 18 20 4 (set (reg:SI 1 dx)
+        (const_int 90 [0x5a])) -1 (nil)
+    (nil))
+
+(insn 20 19 21 4 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*LC3") [flags 0x2] <string_cst 0x1008dde10>)) -1 (nil)
+    (nil))
+
+(insn 21 20 22 4 (set (reg:DI 5 di)
+        (symbol_ref:DI ("_ZZNK5timer16get_elapsed_secsEvE8__func__") [flags 0x1c02] <var_decl 0x10088cbb0 __func__>)) -1 (nil)
+    (nil))
+
+(call_insn 22 21 23 4 (call (mem:QI (symbol_ref:DI ("__assert_rtn") [flags 0x41] <function_decl 0x10084f100 __assert_rtn>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (expr_list:REG_NORETURN (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 1 dx))
+                (expr_list:REG_DEP_TRUE (use (reg:DI 2 cx))
+                    (nil))))))
+
+(barrier 23 22 24)
+
+(code_label 24 23 25 5 71 "" 0 [1 uses])
+
+(note 25 24 26 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(note 26 25 27 5 ("timer.cpp") 91)
+
+(insn 27 26 29 5 (set (reg/f:DI 75)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 29 27 30 5 (parallel [
+            (set (reg:QI 67 [ D.3838 ])
+                (and:QI (mem/s:QI (plus:DI (reg/f:DI 75)
+                            (const_int 16 [0x10])) [0 S1 A64])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 30 29 31 5 (parallel [
+            (set (reg:QI 66 [ D.3839 ])
+                (xor:QI (reg:QI 67 [ D.3838 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 31 30 32 5 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:QI 66 [ D.3839 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 32 31 33 5 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 39)
+            (pc))) -1 (nil)
+    (nil))
+
+(code_label 33 32 34 6 74 "" 0 [0 uses])
+
+(note 34 33 35 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(note 35 34 36 6 ("timer.cpp") 92)
+
+(insn 36 35 37 6 (set (reg:DF 65 [ D.3840 ])
+        (mem/u/c/i:DF (symbol_ref/u:DI ("*LC0") [flags 0x2]) [0 S8 A64])) -1 (nil)
+    (expr_list:REG_EQUAL (const_double:DF 0.0 [0x0.0p+0])
+        (nil)))
+
+(jump_insn 37 36 38 6 (set (pc)
+        (label_ref 84)) -1 (nil)
+    (nil))
+
+(barrier 38 37 39)
+
+(code_label 39 38 40 7 73 "" 0 [1 uses])
+
+(note 40 39 41 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(note 41 40 42 7 ("timer.cpp") 94)
+
+(insn 42 41 43 7 (set (reg/f:DI 77)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 43 42 44 7 (set (reg:DI 64 [ D.3841 ])
+        (mem/s/j:DI (plus:DI (reg/f:DI 77)
+                (const_int 8 [0x8])) [0 <variable>.m_stop_time+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 44 43 45 7 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 stop_time+0 S8 A64])
+        (reg:DI 64 [ D.3841 ])) -1 (nil)
+    (nil))
+
+(note 45 44 46 7 ("timer.cpp") 95)
+
+(insn 46 45 48 7 (set (reg/f:DI 78)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 48 46 49 7 (set (reg:QI 80)
+        (mem/s:QI (plus:DI (reg/f:DI 78)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 49 48 50 7 (parallel [
+            (set (reg:QI 63 [ D.3842 ])
+                (lshiftrt:QI (reg:QI 80)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (expr_list:REG_EQUAL (lshiftrt:QI (mem/s:QI (plus:DI (reg/f:DI 78)
+                    (const_int 16 [0x10])) [0 S1 A64])
+            (const_int 1 [0x1]))
+        (nil)))
+
+(insn 50 49 51 7 (parallel [
+            (set (reg:QI 63 [ D.3842 ])
+                (and:QI (reg:QI 63 [ D.3842 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 51 50 52 7 (parallel [
+            (set (reg:QI 62 [ D.3843 ])
+                (xor:QI (reg:QI 63 [ D.3842 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 52 51 53 7 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:QI 62 [ D.3843 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 53 52 54 7 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 60)
+            (pc))) -1 (nil)
+    (nil))
+
+(code_label 54 53 55 8 77 "" 0 [0 uses])
+
+(note 55 54 56 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(note 56 55 57 8 ("timer.cpp") 96)
+
+(insn 57 56 58 8 (parallel [
+            (set (reg:DI 81)
+                (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                    (const_int -8 [0xfffffffffffffff8])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 58 57 59 8 (set (reg:DI 5 di)
+        (reg:DI 81)) -1 (nil)
+    (nil))
+
+(call_insn 59 58 60 8 (call (mem:QI (symbol_ref/i:DI ("_Z13query_counterPy") [flags 0x1] <function_decl 0x10087a000 query_counter>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(code_label 60 59 61 9 76 "" 0 [1 uses])
+
+(note 61 60 62 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(note 62 61 63 9 ("timer.cpp") 98)
+
+(insn 63 62 64 9 (set (reg:DI 61 [ stop_time.4 ])
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 stop_time+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 64 63 65 9 (set (reg/f:DI 82)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -24 [0xffffffffffffffe8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 65 64 66 9 (set (reg:DI 60 [ D.3845 ])
+        (mem/s/j:DI (reg/f:DI 82) [0 <variable>.m_start_time+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 66 65 67 9 (parallel [
+            (set (reg:DI 83)
+                (minus:DI (reg:DI 61 [ stop_time.4 ])
+                    (reg:DI 60 [ D.3845 ])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 67 66 68 9 (set (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 delta+0 S8 A128])
+        (reg:DI 83)) -1 (nil)
+    (expr_list:REG_EQUAL (minus:DI (reg:DI 61 [ stop_time.4 ])
+            (reg:DI 60 [ D.3845 ]))
+        (nil)))
+
+(note 68 67 69 9 ("timer.cpp") 99)
+
+(insn 69 68 70 9 (set (reg:DI 84)
+        (mem/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -16 [0xfffffffffffffff0])) [0 delta+0 S8 A128])) -1 (nil)
+    (nil))
+
+(insn 70 69 71 9 (set (reg:CCGOC 17 flags)
+        (compare:CCGOC (reg:DI 84)
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 71 70 100 9 (set (pc)
+        (if_then_else (lt (reg:CCGOC 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 75)
+            (pc))) -1 (nil)
+    (nil))
+
+(note 100 71 72 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 72 100 73 10 (set (reg:DF 59 [ D.3846 ])
+        (float:DF (reg:DI 84))) -1 (nil)
+    (nil))
+
+(jump_insn 73 72 74 10 (set (pc)
+        (label_ref 81)) -1 (nil)
+    (nil))
+
+(barrier 74 73 75)
+
+(code_label 75 74 101 11 78 "" 0 [1 uses])
+
+(note 101 75 76 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(insn 76 101 77 11 (parallel [
+            (set (reg:DI 87)
+                (lshiftrt:DI (reg:DI 84)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 77 76 78 11 (parallel [
+            (set (reg:DI 88)
+                (and:DI (reg:DI 84)
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 78 77 79 11 (parallel [
+            (set (reg:DI 87)
+                (ior:DI (reg:DI 87)
+                    (reg:DI 88)))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 79 78 80 11 (set (reg:DF 86)
+        (float:DF (reg:DI 87))) -1 (nil)
+    (nil))
+
+(insn 80 79 81 11 (set (reg:DF 59 [ D.3846 ])
+        (plus:DF (reg:DF 86)
+            (reg:DF 86))) -1 (nil)
+    (nil))
+
+(code_label 81 80 102 12 79 "" 0 [1 uses])
+
+(note 102 81 82 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(insn 82 102 83 12 (set (reg:DF 58 [ g_inv_freq.5 ])
+        (mem/c/i:DF (symbol_ref:DI ("_ZN5timer10g_inv_freqE") [flags 0x1402] <var_decl 0x10086da50 g_inv_freq>) [0 g_inv_freq+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 83 82 84 12 (set (reg:DF 65 [ D.3840 ])
+        (mult:DF (reg:DF 59 [ D.3846 ])
+            (reg:DF 58 [ g_inv_freq.5 ]))) -1 (nil)
+    (nil))
+
+(code_label 84 83 85 13 75 "" 0 [1 uses])
+
+(note 85 84 86 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+
+(insn 86 85 87 13 (set (reg:DF 72 [ <result> ])
+        (reg:DF 65 [ D.3840 ])) -1 (nil)
+    (nil))
+
+(jump_insn 87 86 88 13 (set (pc)
+        (label_ref 91)) -1 (nil)
+    (nil))
+
+(barrier 88 87 89)
+
+(note 89 88 90 NOTE_INSN_FUNCTION_END)
+
+(note 90 89 99 ("timer.cpp") 100)
+
+(note 99 90 93 14 [bb 14] NOTE_INSN_BASIC_BLOCK)
+
+(insn 93 99 94 14 (clobber (reg/i:DF 21 xmm0)) -1 (nil)
+    (nil))
+
+(insn 94 93 95 14 (clobber (reg:DF 72 [ <result> ])) -1 (nil)
+    (nil))
+
+(jump_insn 95 94 96 14 (set (pc)
+        (label_ref 97)) -1 (nil)
+    (nil))
+
+(barrier 96 95 91)
+
+(code_label 91 96 103 15 70 "" 0 [1 uses])
+
+(note 103 91 92 15 [bb 15] NOTE_INSN_BASIC_BLOCK)
+
+(insn 92 103 97 15 (set (reg/i:DF 21 xmm0)
+        (reg:DF 72 [ <result> ])) -1 (nil)
+    (nil))
+
+(code_label 97 92 104 16 80 "" 0 [1 uses])
+
+(note 104 97 98 16 [bb 16] NOTE_INSN_BASIC_BLOCK)
+
+(insn 98 104 0 16 (use (reg/i:DF 21 xmm0)) -1 (nil)
+    (nil))
+
+;; Function void timer::stop() (_ZN5timer4stopEv)
+
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 1 0 5 ("timer.cpp") 79)
+
+(note 5 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(note 2 5 3 2 NOTE_INSN_DELETED)
+
+(insn 3 2 4 2 (set (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+        (reg:DI 5 di [ this ])) -1 (nil)
+    (nil))
+
+(note 4 3 6 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 6 4 7 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(note 7 6 8 3 ("timer.cpp") 81)
+
+(insn 8 7 10 3 (set (reg/f:DI 63)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 10 8 11 3 (parallel [
+            (set (reg:QI 62 [ D.3823 ])
+                (and:QI (mem/s:QI (plus:DI (reg/f:DI 63)
+                            (const_int 16 [0x10])) [0 S1 A64])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 11 10 12 3 (parallel [
+            (set (reg:QI 61 [ D.3824 ])
+                (xor:QI (reg:QI 62 [ D.3823 ])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 12 11 13 3 (set (reg:DI 60 [ D.3825 ])
+        (zero_extend:DI (reg:QI 61 [ D.3824 ]))) -1 (nil)
+    (nil))
+
+(insn 13 12 14 3 (set (reg:DI 59 [ D.3826 ])
+        (reg:DI 60 [ D.3825 ])) -1 (nil)
+    (nil))
+
+(insn 14 13 15 3 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg:DI 59 [ D.3826 ])
+            (const_int 0 [0x0]))) -1 (nil)
+    (nil))
+
+(jump_insn 15 14 16 3 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0x0]))
+            (label_ref 24)
+            (pc))) -1 (nil)
+    (nil))
+
+(code_label 16 15 17 4 83 "" 0 [0 uses])
+
+(note 17 16 18 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 18 17 19 4 (set (reg:DI 2 cx)
+        (symbol_ref/f:DI ("*LC2") [flags 0x2] <string_cst 0x1008dddb0>)) -1 (nil)
+    (nil))
+
+(insn 19 18 20 4 (set (reg:SI 1 dx)
+        (const_int 81 [0x51])) -1 (nil)
+    (nil))
+
+(insn 20 19 21 4 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*LC3") [flags 0x2] <string_cst 0x1008dde10>)) -1 (nil)
+    (nil))
+
+(insn 21 20 22 4 (set (reg:DI 5 di)
+        (symbol_ref:DI ("_ZZN5timer4stopEvE8__func__") [flags 0x1c02] <var_decl 0x10087de70 __func__>)) -1 (nil)
+    (nil))
+
+(call_insn 22 21 23 4 (call (mem:QI (symbol_ref:DI ("__assert_rtn") [flags 0x41] <function_decl 0x10084f100 __assert_rtn>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (expr_list:REG_NORETURN (const_int 0 [0x0])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (expr_list:REG_DEP_TRUE (use (reg:DI 4 si))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 1 dx))
+                (expr_list:REG_DEP_TRUE (use (reg:DI 2 cx))
+                    (nil))))))
+
+(barrier 23 22 24)
+
+(code_label 24 23 25 5 82 "" 0 [1 uses])
+
+(note 25 24 26 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(note 26 25 27 5 ("timer.cpp") 83)
+
+(insn 27 26 28 5 (parallel [
+            (set (reg:DI 58 [ D.3827 ])
+                (plus:DI (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                            (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])
+                    (const_int 8 [0x8])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 28 27 29 5 (set (reg:DI 5 di)
+        (reg:DI 58 [ D.3827 ])) -1 (nil)
+    (nil))
+
+(call_insn 29 28 30 5 (call (mem:QI (symbol_ref/i:DI ("_Z13query_counterPy") [flags 0x1] <function_decl 0x10087a000 query_counter>) [0 S1 A8])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:DI 5 di))
+        (nil)))
+
+(note 30 29 31 5 ("timer.cpp") 85)
+
+(insn 31 30 32 5 (set (reg/f:DI 65)
+        (mem/f/c/i:DI (plus:DI (reg/f:DI 54 virtual-stack-vars)
+                (const_int -8 [0xfffffffffffffff8])) [0 this+0 S8 A64])) -1 (nil)
+    (nil))
+
+(insn 32 31 33 5 (set (reg:QI 66)
+        (mem/s/j:QI (plus:DI (reg/f:DI 65)
+                (const_int 16 [0x10])) [0 S1 A64])) -1 (nil)
+    (nil))
+
+(insn 33 32 34 5 (parallel [
+            (set (reg:QI 67)
+                (ior:QI (reg:QI 66)
+                    (const_int 2 [0x2])))
+            (clobber (reg:CC 17 flags))
+        ]) -1 (nil)
+    (nil))
+
+(insn 34 33 35 5 (set (mem/s/j:QI (plus:DI (reg/f:DI 65)
+                (const_int 16 [0x10])) [0 S1 A64])
+        (reg:QI 67)) -1 (nil)
+    (nil))
+
+(note 35 34 36 NOTE_INSN_FUNCTION_END)
+
+(note 36 35 41 ("timer.cpp") 86)
+
+(note 41 36 38 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 38 41 39 6 (set (pc)
+        (label_ref 40)) -1 (nil)
+    (nil))
+
+(barrier 39 38 37)
+
+(code_label 37 39 42 7 81 "" 0 [0 uses])
+
+(note 42 37 40 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 40 42 43 8 84 "" 0 [1 uses])
+
+(note 43 40 0 8 [bb 8] NOTE_INSN_BASIC_BLOCK)

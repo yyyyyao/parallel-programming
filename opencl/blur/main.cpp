@@ -6,12 +6,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <CL/cl.h>
+
+//#include <OpenCL/cl.h>
+//#include <CL/cl.h>
 
 #define MAX_SOURCE_SIZE (0x100000)
 
 using namespace std;
 
+#if 0
 bool compareMat(const cv::Mat mat1, const cv::Mat mat2)
 {
   int err = 0;
@@ -74,6 +77,7 @@ void myblur(const cv::Mat& input, cv::Mat& dst, cv::Size size)
     }
   }
 }
+#endif
 
 int main(int argc, char* argv[])
 {
@@ -110,11 +114,14 @@ int main(int argc, char* argv[])
   /* execute refrence codes */
   blur(input, output_ref, ksize, cv::Point(-1, -1), cv::BORDER_REFLECT_101);
 
-  myblur(input, output, ksize);
+  //myblur(input, output, ksize);
 
-  compareMat(output_ref, output);
+  //compareMat(output_ref, output);
 
-#if 1
+  cv::imshow("", output_cl);
+  cv::waitKey(0);
+
+#if 0
   int inputSize = input.rows * input.step;
   float fweight;
 
@@ -241,6 +248,6 @@ int main(int argc, char* argv[])
   compareMat(output_ref, output_cl);
   //compareMat(input, output_cl);
 
-  return 0;
 #endif
+  return 0;
 }
