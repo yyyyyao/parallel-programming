@@ -546,6 +546,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       this->m_DeltaLatticePerThread[n]->FillBuffer( 0.0 );
 
       m_oneDSize = size[0] * size[1];
+      printf("%d\n", m_oneDSize);
       this->m_rawDeltaLattice[n] = new float[m_oneDSize];
       this->m_rawOmegaLattice[n] = new float[m_oneDSize];
       for(int _k = 0; _k < m_oneDSize; _k++) {
@@ -779,7 +780,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       w2Sum += B * B;
       }
 #else
-      neighborRawImage[idx[0] * size[1] + idx[1]] = B;
+      neighborRawImage[idx[1] * size[0] + idx[0]] = B;
       w2Sum += B * B;
       //printf("idx[0]:%d idx[1]:%d B:%f\n", idx[0], idx[1], B);
       }
@@ -793,10 +794,12 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     float* currentThreadRawDeltaLattice = this->m_rawDeltaLattice[threadId];
     float data_;
 
-#define DEB1
+#define DEB1 1
 #ifdef DEB1
     for( ItW.GoToBegin(); !ItW.IsAtEnd(); ++ItW ) {
       typename RealImageType::IndexType idx = ItW.GetIndex();
+      int j_ = idx[0];
+      int i_ = idx[1];
 #else
 
     for(int i_ = 0; i_ < size[0]; i_++) {
@@ -805,8 +808,6 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       idx[0] = j_;
       idx[1] = i_;
 #endif
-      int j_ = idx[0];
-      int i_ = idx[1];
       for( unsigned int i = 0; i < ImageDimension; i++ )
         {
         idx[i] += static_cast<unsigned>( p[i] );
@@ -820,25 +821,34 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       //RealType wc = this->m_PointWeights->GetElement(n);
       RealType wc = this->m_DataSet_Weight[n]; // = 1.0.
 
-      //RealType t = ItW.Get();
-      RealType t = neighborRawImage[j_ * size[1] + i_];
-      //printf("idx[0]:%d idx[1]:%d ref:%f yao:%f\n", idx[0], idx[1], t, t_);
+      RealType t = neighborRawImage[i_ * size[0] + j_];
+      //printf("idx[0]:%d idx[1]:%d yao:%f\n", idx[0], idx[1], t);
+#ifdef DEB1
       RealType _current = currentThreadOmegaLattice->GetPixel( idx );
       _current = _current + wc * t * t;
-      currentThreadOmegaLattice->SetPixel( idx,
-        _current);
-        //currentThreadOmegaLattice->GetPixel( idx ) + wc * t * t );
-      //PointDataType data = this->m_InputPointData->GetElement( n );
-      PointDataType data = this->m_InputPointDataSet_[n].data;
+      currentThreadOmegaLattice->SetPixel( idx, _current);
+      int _idx = idx[1] * 8 + idx[0];
+      currentThreadRawOmegaLattice[_idx] = _current; 
+
+      //PointDataType data = this->m_InputPointDataSet_[n].data;
       data_ = this->m_InputPointDataSet_[n].data[0];
       data_ *= ( t * t * t * wc / w2Sum );
-      data *= ( t * t * t * wc / w2Sum );
       currentThreadDeltaLattice->SetPixel( idx,
-        currentThreadDeltaLattice->GetPixel( idx ) + data );
+        currentThreadDeltaLattice->GetPixel( idx ) + data_ );
 
-      int _idx = idx[0] * size[0] + idx[1];
-      currentThreadRawOmegaLattice[_idx] = _current; 
       currentThreadRawDeltaLattice[_idx] += data_;
+
+#else
+      int _idx = idx[1] * 8 + idx[0];
+
+      RealType _current = currentThreadRawOmegaLattice[_idx];
+      _current = _current + wc * t * t;
+      currentThreadRawOmegaLattice[_idx] = _current; 
+
+      data_ = this->m_InputPointDataSet_[n].data[0];
+      data_ *= ( t * t * t * wc / w2Sum );
+      currentThreadRawDeltaLattice[_idx] += data_;
+#endif
       }
     }
 #ifdef DEB1
@@ -1034,18 +1044,26 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
 
     int _i = 0;
     float _P = 0;
+    PointDataType tD, tO;
     for( ItP.GoToBegin(), ItO.GoToBegin(), ItD.GoToBegin(); !ItP.IsAtEnd();
       ++ItP, ++ItO, ++ItD )
       {
       PointDataType P;
       P.Fill( 0 );
-      float temp = ItO.Get();
       float temp_ = m_rawOmegaLattice[0][_i];
-      if(temp != 0)
+      if(temp_ != 0)
       //if( ItO.Get() != 0 )
         {
-        P = ItD.Get() / ItO.Get();
-        //P = m_rawDeltaLattice[0][_i] / m_rawOmegaLattice[0][_i];
+        //P = ItD.Get() / ItO.Get();
+        _P = m_rawDeltaLattice[0][_i] / m_rawOmegaLattice[0][_i];
+
+#if 0
+        tO = ItO.Get();
+        tD = ItD.Get();
+        printf("ItD ref:%f yao:%f\n", tD[0], m_rawDeltaLattice[0][_i]);
+        printf("ItO ref:%f yao:%f\n", tO[0], m_rawOmegaLattice[0][_i]);
+#endif
+
         for( unsigned int i = 0; i < P.Size(); i++ )
           {
 #if 0
@@ -1055,7 +1073,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
             }
 #endif
           }
-        ItP.Set( P );
+        ItP.Set( _P );
         }
 
       if(m_rawOmegaLattice[_i] != 0) {
