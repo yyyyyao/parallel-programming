@@ -30,6 +30,7 @@
 #include "vnl/vnl_vector.h"
 #include "vcl_limits.h"
 
+#include <stdio.h>
 namespace itk
 {
 /**
@@ -634,6 +635,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
 #endif
 }
 
+
 template<class TInputPointSet, class TOutputImage>
 void
 BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
@@ -716,10 +718,21 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       }
 
     RealType w2Sum = 0.0;
+
+//#define DEB 1
+#ifdef DEB
     for( ItW.GoToBegin(); !ItW.IsAtEnd(); ++ItW ) /* ItW is m_SplineOrder[i] + 1 * dim? */
       {
-      RealType B = 1.0;
       typename RealImageType::IndexType idx = ItW.GetIndex();
+#else
+    for(int i_ = 0; i_ < size[0]; i_++) {
+      int idx[2];
+      for(int j_ = 0; j_ < size[1]; j_++) {
+      idx[0] = j_;
+      idx[1] = i_;
+#endif
+      RealType B = 1.0;
+      //printf("start:%d %d %d\n", n, idx[0], idx[1]);
       for( unsigned int i = 0; i < ImageDimension; i++ )
         {
         RealType u = static_cast<RealType>( p[i] -
@@ -760,9 +773,18 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
             }
           }
         }
+
+#ifdef DEB
       ItW.Set( B );
       w2Sum += B * B;
       }
+#else
+      neighborRawImage[idx[0] * size[1] + idx[1]] = B;
+      w2Sum += B * B;
+      //printf("idx[0]:%d idx[1]:%d B:%f\n", idx[0], idx[1], B);
+      }
+    }
+#endif
 
     RealImageType * currentThreadOmegaLattice = this->m_OmegaLatticePerThread[threadId];
     PointDataImageType * currentThreadDeltaLattice = this->m_DeltaLatticePerThread[threadId];
@@ -771,20 +793,36 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     float* currentThreadRawDeltaLattice = this->m_rawDeltaLattice[threadId];
     float data_;
 
-    for( ItW.GoToBegin(); !ItW.IsAtEnd(); ++ItW )
-      {
+#define DEB1
+#ifdef DEB1
+    for( ItW.GoToBegin(); !ItW.IsAtEnd(); ++ItW ) {
       typename RealImageType::IndexType idx = ItW.GetIndex();
+#else
+
+    for(int i_ = 0; i_ < size[0]; i_++) {
+      int idx[2];
+      for(int j_ = 0; j_ < size[1]; j_++) {
+      idx[0] = j_;
+      idx[1] = i_;
+#endif
+      int j_ = idx[0];
+      int i_ = idx[1];
       for( unsigned int i = 0; i < ImageDimension; i++ )
         {
         idx[i] += static_cast<unsigned>( p[i] );
+
         if( this->m_CloseDimension[i] )
           {
           idx[i] %= size[i];
           }
+
         }
       //RealType wc = this->m_PointWeights->GetElement(n);
       RealType wc = this->m_DataSet_Weight[n]; // = 1.0.
-      RealType t = ItW.Get();
+
+      //RealType t = ItW.Get();
+      RealType t = neighborRawImage[j_ * size[1] + i_];
+      //printf("idx[0]:%d idx[1]:%d ref:%f yao:%f\n", idx[0], idx[1], t, t_);
       RealType _current = currentThreadOmegaLattice->GetPixel( idx );
       _current = _current + wc * t * t;
       currentThreadOmegaLattice->SetPixel( idx,
@@ -803,6 +841,11 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       currentThreadRawDeltaLattice[_idx] += data_;
       }
     }
+#ifdef DEB1
+
+#else
+    }
+#endif
 }
 
 #if 0
