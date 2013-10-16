@@ -962,53 +962,6 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
      * Accumulate all the delta lattice and omega lattice values to
      * calculate the final phi lattice.
      */
-    ImageRegionIterator< PointDataImageType > ItD(
-      this->m_DeltaLatticePerThread[0],
-      this->m_DeltaLatticePerThread[0]->GetLargestPossibleRegion() );
-    ImageRegionIterator< RealImageType > ItO(
-      this->m_OmegaLatticePerThread[0],
-      this->m_OmegaLatticePerThread[0]->GetLargestPossibleRegion() );
-
-    for( ThreadIdType n = 1; n < this->GetNumberOfThreads(); n++ )
-      {
-      ImageRegionIterator< PointDataImageType > Itd(
-        this->m_DeltaLatticePerThread[n],
-        this->m_DeltaLatticePerThread[n]->GetLargestPossibleRegion() );
-      ImageRegionIterator< RealImageType > Ito(
-        this->m_OmegaLatticePerThread[n],
-        this->m_OmegaLatticePerThread[n]->GetLargestPossibleRegion() );
-
-      ItD.GoToBegin();
-      ItO.GoToBegin();
-      Itd.GoToBegin();
-      Ito.GoToBegin();
-      while( !ItD.IsAtEnd() )
-        {
-        ItD.Set( ItD.Get() + Itd.Get() );
-        ItO.Set( ItO.Get() + Ito.Get() );
-
-        ++ItD;
-        ++ItO;
-        ++Itd;
-        ++Ito;
-        }
-      }
-
-    float tempO[64];
-    float tempD[64];
-    float tempD_[64];
-    ItD.GoToBegin();
-    ItO.GoToBegin();
-    int _j = 0;
-    while( !ItD.IsAtEnd() ) {
-      tempD[_j] = ItD.Get()[0];
-      tempD_[_j] = ItD.Get()[1];
-      tempO[_j] = ItO.Get();
-      _j++;
-      ++ItD;
-      ++ItO;
-    }
-
     for(int n = 1; n < m_ThreadNum; n++) {
       for(int j = 0; j < m_oneDSize; j++) {
         m_rawDeltaLattice[0][j] += m_rawDeltaLattice[n][j];
@@ -1044,35 +997,22 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
 
     int _i = 0;
     float _P = 0;
-    PointDataType tD, tO;
-    for( ItP.GoToBegin(), ItO.GoToBegin(), ItD.GoToBegin(); !ItP.IsAtEnd();
-      ++ItP, ++ItO, ++ItD )
+    for( ItP.GoToBegin(); !ItP.IsAtEnd(); ++ItP)
       {
-      PointDataType P;
-      P.Fill( 0 );
       float temp_ = m_rawOmegaLattice[0][_i];
       if(temp_ != 0)
-      //if( ItO.Get() != 0 )
         {
-        //P = ItD.Get() / ItO.Get();
         _P = m_rawDeltaLattice[0][_i] / m_rawOmegaLattice[0][_i];
 
 #if 0
-        tO = ItO.Get();
-        tD = ItD.Get();
-        printf("ItD ref:%f yao:%f\n", tD[0], m_rawDeltaLattice[0][_i]);
-        printf("ItO ref:%f yao:%f\n", tO[0], m_rawOmegaLattice[0][_i]);
-#endif
-
         for( unsigned int i = 0; i < P.Size(); i++ )
           {
-#if 0
           if( vnl_math_isnan( P[i] ) || vnl_math_isinf( P[i] ) )
             {
             P[i] = 0;
             }
-#endif
           }
+#endif
         ItP.Set( _P );
         }
 
