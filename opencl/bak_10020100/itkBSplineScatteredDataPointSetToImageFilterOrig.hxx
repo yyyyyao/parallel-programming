@@ -988,9 +988,17 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     this->m_PhiLattice->SetRegions( size );
     this->m_PhiLattice->Allocate();
     this->m_PhiLattice->FillBuffer( 0.0 );
-    this->m_IplPhiLattice = cvCreateImage(cvSize(size[0], size[1]),
-          IPL_DEPTH_32F, 1);
 
+    this->m_rawPhiLatticeSize = new int[ImageDimension];
+    for(int k = 0; k < ImageDimension; k++) {
+      m_rawPhiLatticeSize[k] = size[k];
+    }
+
+    int rawSize = size[0] * size[1];
+    this->m_rawPhiLattice = new float[rawSize];
+    for(int k = 0; k < rawSize; k++) {
+      this->m_rawPhiLattice[k] = 0;
+    }
 
     ImageRegionIterator<PointDataImageType> ItP(
       this->m_PhiLattice, this->m_PhiLattice->GetLargestPossibleRegion() );
@@ -998,6 +1006,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     int _i = 0;
     float _P = 0;
     for( ItP.GoToBegin(); !ItP.IsAtEnd(); ++ItP)
+    //for(int k = 0; k < rawSize; k++)
       {
       float temp_ = m_rawOmegaLattice[0][_i];
       if(temp_ != 0)
@@ -1014,6 +1023,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
           }
 #endif
         ItP.Set( _P );
+        //m_rawPhiLattice[k] = _P;
         }
 
       if(m_rawOmegaLattice[_i] != 0) {
@@ -1193,6 +1203,8 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
 {
   //const TInputPointSet *input = this->GetInput();
   PointDataImagePointer collapsedPhiLattices[ImageDimension + 1];
+  float** rawCollapsedPhiLattices = new float*[ImageDimension + 1];
+
   for( unsigned int i = 0; i < ImageDimension; i++ )
     {
     collapsedPhiLattices[i] = PointDataImageType::New();
@@ -1208,20 +1220,26 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       }
     collapsedPhiLattices[i]->SetRegions( size );
     collapsedPhiLattices[i]->Allocate();
+
+    rawCollapsedPhiLattices[i] = new float[size[0] * size[1]];
     }
   collapsedPhiLattices[ImageDimension] = this->m_PhiLattice;
+  rawCollapsedPhiLattices[ImageDimension] = this->m_rawPhiLattice;
+
   unsigned int totalNumberOfSpans[ImageDimension];
   for( unsigned int i = 0; i < ImageDimension; i++ )
     {
     if( this->m_CloseDimension[i] )
       {
       totalNumberOfSpans[i] =
-        this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i];
+        //this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i];
+        this->m_rawPhiLatticeSize[i];
       }
     else
       {
       totalNumberOfSpans[i] =
-        this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i] -
+        //this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i] -
+        this->m_rawPhiLatticeSize[i] - 
         this->m_SplineOrder[i];
       }
     }
