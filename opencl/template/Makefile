@@ -1,8 +1,10 @@
-CC = gcc
+CC = g++
 RM = rm
-LDFLAGS += -L/usr/local/cuda-5.0/lib64 -lOpenCL
+LDFLAGS += -L/usr/local/cuda/lib64
+LDFLAGS += -L/usr/lib64/nvidia
+LDFLAGS += -lOpenCL
 LDFLAGS += `pkg-config --libs opencv`
-CFLAGS += -I/usr/local/cuda-5.0/include
+CFLAGS += -I/usr/local/cuda/include
 CFLAGS += `pkg-config --cflags opencv`
 EXTENSION = cpp
 
