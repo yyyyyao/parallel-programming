@@ -105,7 +105,7 @@ int main(int argc, char const* argv[])
 
   for ( It.GoToBegin(); !It.IsAtEnd(); ++It )
     {
-    if (maskImage->GetPixel( It.GetIndex()) == MASK_VALUE)
+    if (maskImage->GetPixel( It.GetIndex()) != 0)
     //if ( It.Get() != itk::NumericTraits<PixelType>::Zero )
       {
    

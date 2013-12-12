@@ -80,11 +80,14 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
   }
   this->m_DoMultilevel = false;
   //this->m_GenerateOutputImage = true;
+  //at first, I don't support generate output image.
   this->m_GenerateOutputImage = false;
   for(int i = 0; i < DIM; i++) {
-    this->m_NumberOfLevels[i] = 1; //what is this value?
+    this->m_NumberOfLevels[i] = 1; //number of levels is for multi_level bspline interpolation.
+    //at first, I don't support multi level. see paper.
   }
-  this->m_MaximumNumberOfLevels = 1; //what is this?
+  this->m_MaximumNumberOfLevels = 1; //max level of multi_level bspline interpolation.
+  //this value is used for condition of multi_level bspline interpolation.
 
   this->m_PhiLattice = NULL;
 
@@ -989,6 +992,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     this->m_PhiLattice->Allocate();
     this->m_PhiLattice->FillBuffer( 0.0 );
 
+#if 0
     this->m_rawPhiLatticeSize = new int[ImageDimension];
     for(int k = 0; k < ImageDimension; k++) {
       m_rawPhiLatticeSize[k] = size[k];
@@ -999,6 +1003,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     for(int k = 0; k < rawSize; k++) {
       this->m_rawPhiLattice[k] = 0;
     }
+#endif
 
     ImageRegionIterator<PointDataImageType> ItP(
       this->m_PhiLattice, this->m_PhiLattice->GetLargestPossibleRegion() );
@@ -1224,7 +1229,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     rawCollapsedPhiLattices[i] = new float[size[0] * size[1]];
     }
   collapsedPhiLattices[ImageDimension] = this->m_PhiLattice;
-  rawCollapsedPhiLattices[ImageDimension] = this->m_rawPhiLattice;
+  //rawCollapsedPhiLattices[ImageDimension] = this->m_rawPhiLattice;
 
   unsigned int totalNumberOfSpans[ImageDimension];
   for( unsigned int i = 0; i < ImageDimension; i++ )
@@ -1232,14 +1237,14 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
     if( this->m_CloseDimension[i] )
       {
       totalNumberOfSpans[i] =
-        //this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i];
-        this->m_rawPhiLatticeSize[i];
+        this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i];
+        //this->m_rawPhiLatticeSize[i];
       }
     else
       {
       totalNumberOfSpans[i] =
-        //this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i] -
-        this->m_rawPhiLatticeSize[i] - 
+        this->m_PhiLattice->GetLargestPossibleRegion().GetSize()[i] -
+        //this->m_rawPhiLatticeSize[i] - 
         this->m_SplineOrder[i];
       }
     }

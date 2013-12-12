@@ -1,1 +1,0 @@
-/home/yao/works/itk-work/BSplineScattered/test/build/CMakeFiles/itkBSplineScatteredDataPointSetToImageFilterTest.dir
