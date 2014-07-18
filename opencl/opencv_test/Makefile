@@ -7,7 +7,7 @@ EXTENSION = cpp
 
 TARGET = blur
 $(TARGET): $(TARGET).$(EXTENSION)
-	$(CC) $(DEBUG) -o $(TARGET) $(LDFLAGS) $(CFLAGS) $(TARGET).$(EXTENSION)
+	$(CC) $(TARGET).$(EXTENSION) $(DEBUG) -o $(TARGET) $(LDFLAGS) $(CFLAGS)
 
 clean:
 	$(RM) $(TARGET)
