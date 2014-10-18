@@ -1,1 +1,0 @@
-/home/yao/work/parallel-programming/opencl/bak_10020100/build/CMakeFiles/itkBSplineScatteredDataPointSetToImageFilterTest.dir
